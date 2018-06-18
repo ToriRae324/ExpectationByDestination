@@ -17,12 +17,16 @@ var sort = ""
 var order = ""
 var cuisineType = ""
 
-//$("#search").on(click(function () {
-    //city = $("city input").val().trim()
-    //state = $(state input).val().trim()
-$(document).ready(function () {
 
-    $.ajax({
+$(document).ready(function () {
+    $("#locSub").on("click", function (event) {
+        event.preventDefault()
+        city = $("#inputCity").val().trim()
+        state = $("#inputState").val().trim()
+        zomatoSearch = city + ", " + state
+        zomatoUrl = "https://developers.zomato.com/api/v2.1/locations?query=" + zomatoSearch + "&count=1$apikey=b8fefdb1eb1eef0859aad5778cee33ad"
+        alert(zomatoUrl)
+        $.ajax({
         url: zomatoUrl,
         method: "GET",
         async: true,
@@ -59,7 +63,17 @@ $(document).ready(function () {
 
             for (var i = 0; i < response.restaurants.length; i++) {
 
-                // convienience vars
+                console.log("Name: " + response.restaurants[i].restaurant.name )
+                console.log("Rating: " + response.restaurants[i].restaurant.user_rating.aggregate_rating)
+                console.log("Cuisines: " + response.restaurants[i].restaurant.cuisines)
+                console.log("Average Cost for Two: $" + response.restaurants[i].restaurant.average_cost_for_two)
+                console.log("Currency: " + response.restaurants[i].restaurant.currency)
+                console.log("Located: " + response.restaurants[i].restaurant.location.locality_verbose)
+                console.log("Street Address:" + response.restaurants[i].restaurant.location.address)
+                console.log("Website: " + response.restaurants[i].restaurant.url)
+                console.log("Photo Url : " + response.restaurants[i].restaurant.photos_url)
+                console.log("---------------")
+
                 var info = response.restaurants[i].restaurant;
 
                 var name = info.name;
@@ -78,11 +92,9 @@ $(document).ready(function () {
                 var newDiv = $("<div>")
                 newDiv.html('<div class="row"><div class="col-md-12"><div class="card"><div class="card-body"><h5 class="card-title"><i class="fas fa-star"></i>' + name + '</h5><h6 class="card-subtitle mb-2 text-muted">' + rating + '</h6><img class="restaurantImage" src=' + thumbnail + '><ul><li>Cuisines: ' + cuisines + '</li><li>Avg. Cost for Two: $' + pairPrice + '</li><li>Address: ' + address + '</li></ul><a href=' + url + 'class="card-link">More Details</a></div></div></div></div>')
                 $("#restaurantDetails").append(newDiv);
+            }
+        })
 
-
-
-            };
-        });
     
     //list of top rated italian restaurants
     /*
@@ -111,9 +123,8 @@ $(document).ready(function () {
     })
     */
 })
+
+
+})
 });
-
-
-
-
 
