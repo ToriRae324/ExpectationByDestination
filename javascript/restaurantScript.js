@@ -35,17 +35,21 @@ $(document).ready(function () {
                 'b8fefdb1eb1eef0859aad5778cee33ad');
         },
     }).then(function (response) {
-        console.log(response)
-        console.log(response.location_suggestions[0].city_id)
-        console.log(response.location_suggestions[0].city_name)
-        entityID = response.location_suggestions[0].city_id
-        entityType = "city"
-        count = "10"
-        sort = "rating"
-        order = "desc"
+        // console.log(response)
+        // console.log(response.location_suggestions[0].city_id)
+        // console.log(response.location_suggestions[0].city_name)
+        entityID = response.location_suggestions[0].city_id;
+        entityType = "city";
+        count = "10";
+        sort = "rating";
+        order = "desc";
+
+
+
+
         //Top rated API Search
         zomatoUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=" + entityID + "&entity_type=" + entityType + "&count=" + count + "&sort=" + sort + "&order=" + order
-        console.log("top rated list")
+        console.log("top rated list:")
         $.ajax({
             url: zomatoUrl,
             method: "GET",
@@ -55,8 +59,10 @@ $(document).ready(function () {
                     'b8fefdb1eb1eef0859aad5778cee33ad');
             },
         }).then(function (response) {
-            console.log(response)
+            console.log(response, response.restaurants.length);
+
             for (var i = 0; i < response.restaurants.length; i++) {
+
                 console.log("Name: " + response.restaurants[i].restaurant.name )
                 console.log("Rating: " + response.restaurants[i].restaurant.user_rating.aggregate_rating)
                 console.log("Cuisines: " + response.restaurants[i].restaurant.cuisines)
@@ -88,6 +94,7 @@ $(document).ready(function () {
                 $("#restaurantDetails").append(newDiv);
             }
         })
+
     
     //list of top rated italian restaurants
     /*
@@ -117,5 +124,7 @@ $(document).ready(function () {
     */
 })
 
+
 })
 });
+
