@@ -4,9 +4,17 @@
     border-bottom: 1px black solid;
 }
 
+#headerBackground {
+    text-align: center;
+    width: 100%;
+    background: gray;
+    height: 100px;
+    background-image: url("../images/header.jpg");
+
+}
+
 .image {
     margin-bottom: 15px;
-<<<<<<< HEAD
 }
 
 h2 {
@@ -29,6 +37,14 @@ h2 {
 
 #backgroundBorder {
     border: 1px solid gray;
-=======
->>>>>>> faa2d8c1ccf8d6b73fdc996bcb2ba2e2d72cbb13
+}
+
+#eventLink,
+#restaurantLink {
+    padding-left: 15px;
+    margin-left: 15px;
+    line-height: 18px;
+    color: black;
+    text-decoration: none;
+    border-left: 1px solid gray;
 }
