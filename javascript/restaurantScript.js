@@ -6,8 +6,8 @@
 
 
 
-var city = "atlanta"
-var state = "GA"
+var city = "Charlotte" //default on page load city
+var state = "NC" //default on page load state
 var zomatoSearch = city + ", " + state
 var zomatoUrl = "https://developers.zomato.com/api/v2.1/locations?query=" + zomatoSearch + "&count=1$apikey=b8fefdb1eb1eef0859aad5778cee33ad"
 var cityID = ""
@@ -18,6 +18,8 @@ var order = ""
 var cuisineType = ""
 
 //$("#search").on(click(function () {
+    //city = $("city input").val().trim()
+    //state = $(state input).val().trim()
 $(document).ready(function () {
 
     $.ajax({
@@ -51,7 +53,7 @@ $(document).ready(function () {
         }).then(function (response) {
             console.log(response)
             for (var i = 0; i < response.restaurants.length; i++) {
-                console.log(response.restaurants[i].restaurant.name)
+                console.log(response.restaurants[i].restaurant.name + ":" + response.restaurants[i].restaurant.user_rating.aggregate_rating)
             }
         })
     
