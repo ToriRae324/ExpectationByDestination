@@ -17,12 +17,16 @@ var sort = ""
 var order = ""
 var cuisineType = ""
 
-//$("#search").on(click(function () {
-    //city = $("city input").val().trim()
-    //state = $(state input).val().trim()
-$(document).ready(function () {
 
-    $.ajax({
+$(document).ready(function () {
+    $("#locSub").on("click", function (event) {
+        event.preventDefault()
+        city = $("#inputCity").val().trim()
+        state = $("#inputState").val().trim()
+        zomatoSearch = city + ", " + state
+        zomatoUrl = "https://developers.zomato.com/api/v2.1/locations?query=" + zomatoSearch + "&count=1$apikey=b8fefdb1eb1eef0859aad5778cee33ad"
+        alert(zomatoUrl)
+        $.ajax({
         url: zomatoUrl,
         method: "GET",
         async: true,
@@ -53,7 +57,16 @@ $(document).ready(function () {
         }).then(function (response) {
             console.log(response)
             for (var i = 0; i < response.restaurants.length; i++) {
-                console.log(response.restaurants[i].restaurant.name + ":" + response.restaurants[i].restaurant.user_rating.aggregate_rating)
+                console.log("Name: " + response.restaurants[i].restaurant.name )
+                console.log("Rating: " + response.restaurants[i].restaurant.user_rating.aggregate_rating)
+                console.log("Cuisines: " + response.restaurants[i].restaurant.cuisines)
+                console.log("Average Cost for Two: $" + response.restaurants[i].restaurant.average_cost_for_two)
+                console.log("Currency: " + response.restaurants[i].restaurant.currency)
+                console.log("Located: " + response.restaurants[i].restaurant.location.locality_verbose)
+                console.log("Street Address:" + response.restaurants[i].restaurant.location.address)
+                console.log("Website: " + response.restaurants[i].restaurant.url)
+                console.log("Photo Url : " + response.restaurants[i].restaurant.photos_url)
+                console.log("---------------")
             }
         })
     
@@ -84,5 +97,6 @@ $(document).ready(function () {
     })
     */
 })
-});
 
+})
+});
