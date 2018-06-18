@@ -67,6 +67,25 @@ $(document).ready(function () {
                 console.log("Website: " + response.restaurants[i].restaurant.url)
                 console.log("Photo Url : " + response.restaurants[i].restaurant.photos_url)
                 console.log("---------------")
+
+                var info = response.restaurants[i].restaurant;
+
+                var name = info.name;
+                var rating = info.user_rating.aggregate_rating;
+                var cuisines = info.cuisines;
+                var thumbnail = info.thumb;
+                var pairPrice = info.average_cost_for_two;
+                var address = info.location.address;
+                var url = info.url
+                
+
+                console.log(name + ":" + rating);
+                console.log(cuisines, pairPrice, address);
+
+                // Parse info into Card HTML
+                var newDiv = $("<div>")
+                newDiv.html('<div class="row"><div class="col-md-12"><div class="card"><div class="card-body"><h5 class="card-title"><i class="fas fa-star"></i>' + name + '</h5><h6 class="card-subtitle mb-2 text-muted">' + rating + '</h6><img class="restaurantImage" src=' + thumbnail + '><ul><li>Cuisines: ' + cuisines + '</li><li>Avg. Cost for Two: $' + pairPrice + '</li><li>Address: ' + address + '</li></ul><a href=' + url + 'class="card-link">More Details</a></div></div></div></div>')
+                $("#restaurantDetails").append(newDiv);
             }
         })
     
