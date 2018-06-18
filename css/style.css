@@ -21,3 +21,15 @@
     margin-right: 50px;
     float: left;
 }
+
+.restaurantItem {
+    margin-bottom: 25px;
+}
+
+#eventDisplay{
+    display: none;
+}
+
+#currentCity{
+    margin-bottom: 25px;
+}

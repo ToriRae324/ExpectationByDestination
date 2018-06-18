@@ -44,8 +44,8 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <button id="restaurants">Restaurants</button>
-                        <button id="events">Events</button>
+                        <button class="btn btn-light" id="restaurantsBtn">Restaurants</button>
+                        <button class="btn btn-light" id="eventsBtn">Events</button>
                     </div>
                 </div>
             </div>
@@ -117,7 +117,9 @@
                             </select>
                         </div>
                     </div>
+
                     <button type="submit" class="btn btn-primary" id="locSub">Submit</button>
+
                 </form>
             </div>
 
@@ -127,17 +129,17 @@
 
 
         <!-- Main Restaurants Content -->
-        <div class="row" id="restaurantsDisplay">
+        <div class="row" id="restaurantDisplay">
 
             <!-- Resturants -->
             <div class="col-md-9">
-                &lt;Resturant Stuff Here&gt;
+                <h3 id="currentCity">Places to eat around ... </h3>
                 <div class="row">
                     <div class="col-md-2">
                         <div class="btn-group-vertical">
-                            <button>Top Rated</button>
-                            <button>Cuisines</button>
-                            <button>More</button>
+                            <button class="btn btn-light">Top Rated</button>
+                            <button class="btn btn-light">Cuisines</button>
+                            <button class="btn btn-light">More</button>
                         </div>
                     </div>
 
@@ -170,9 +172,9 @@
             </div>
 
             <!-- Food Images -->
-            <div class="col-md-3 text-right">
+            <!-- <div class="col-md-3 text-right">
 
-                <!-- Image 1 -->
+                Image 1
                 <div class="row image">
                     <div class="col-md-12">
                         <a href="https://placeholder.com">
@@ -181,7 +183,7 @@
                     </div>
                 </div>
 
-                <!-- Image 2 -->
+                Image 2
                 <div class="row image">
                     <div class="col-md-12">
                         <a href="https://placeholder.com">
@@ -190,7 +192,7 @@
                     </div>
                 </div>
 
-                <!-- Image 3 -->
+                Image 3
                 <div class="row image">
                     <div class="col-md-12">
                         <a href="https://placeholder.com">
@@ -199,7 +201,7 @@
                     </div>
                 </div>
 
-                <!-- Image 4 -->
+                Image 4
                 <div class="row image">
                     <div class="col-md-12">
                         <a href="https://placeholder.com">
@@ -209,14 +211,19 @@
                 </div>
 
 
-            </div>
+             </div> -->
             <!-- End Food Images -->
 
         </div>
         <!-- End Main Content -->
 
+
+
+
+
+
         <!-- EventMain Content -->
-        <div class="row">
+        <div class="row" id="eventDisplay">
 
                 <!-- Events -->
                 <div class="col-md-9">
