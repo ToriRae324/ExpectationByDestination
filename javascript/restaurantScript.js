@@ -31,17 +31,21 @@ $(document).ready(function () {
                 'b8fefdb1eb1eef0859aad5778cee33ad');
         },
     }).then(function (response) {
-        console.log(response)
-        console.log(response.location_suggestions[0].city_id)
-        console.log(response.location_suggestions[0].city_name)
-        entityID = response.location_suggestions[0].city_id
-        entityType = "city"
-        count = "10"
-        sort = "rating"
-        order = "desc"
+        // console.log(response)
+        // console.log(response.location_suggestions[0].city_id)
+        // console.log(response.location_suggestions[0].city_name)
+        entityID = response.location_suggestions[0].city_id;
+        entityType = "city";
+        count = "10";
+        sort = "rating";
+        order = "desc";
+
+
+
+
         //Top rated API Search
         zomatoUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=" + entityID + "&entity_type=" + entityType + "&count=" + count + "&sort=" + sort + "&order=" + order
-        console.log("top rated list")
+        console.log("top rated list:")
         $.ajax({
             url: zomatoUrl,
             method: "GET",
@@ -51,11 +55,35 @@ $(document).ready(function () {
                     'b8fefdb1eb1eef0859aad5778cee33ad');
             },
         }).then(function (response) {
-            console.log(response)
+            console.log(response, response.restaurants.length);
+
             for (var i = 0; i < response.restaurants.length; i++) {
-                console.log(response.restaurants[i].restaurant.name + ":" + response.restaurants[i].restaurant.user_rating.aggregate_rating)
-            }
-        })
+
+                // convienience vars
+                var response = response.restaurants[i].restaurant;
+
+                var name = response.name;
+                var rating = response.user_rating.aggregate_rating;
+                var cuisines = response.cuisines;
+                var thumbnail = response.thumb;
+                var pairPrice = response.average_cost_for_two;
+                var address = response.location.address;
+                var url = response.url
+                
+
+                console.log(name + ":" + rating);
+                console.log(cuisines, pairPrice, address);
+
+                // Parse response into Card HTML
+                var html = 
+                '<div class="row"><div class="col-md-12"><div class="card"><div class="card-body"><h5 class="card-title"><i class="fas fa-star"></i>' + name + '</h5><h6 class="card-subtitle mb-2 text-muted">' + rating + '</h6><img class="restaurantImage" src=' + thumbnail + '><ul><li>Cuisines: ' + cuisines + '</li><li>Avg. Cost for Two: $' + pairPrice + '</li><li>Address: ' + address + '</li></ul><a href=' + url + 'class="card-link">More Details</a></div></div></div></div>';
+
+                $("#restaurantDetails").append.html;
+
+
+
+            };
+        });
     
     //list of top rated italian restaurants
     /*
@@ -85,4 +113,8 @@ $(document).ready(function () {
     */
 })
 });
+
+
+
+
 

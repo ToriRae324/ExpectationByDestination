@@ -17,34 +17,7 @@
     margin-bottom: 15px;
 }
 
-h2 {
-    font-size: 24px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-#searchButton {
-    font-size: 14px;
- 
-}
-#searchInput {
-    width: 60%;
- 
-}
-
-#filterButtons {
-    float: right;
-}
-
-#backgroundBorder {
-    border: 1px solid gray;
-}
-
-#eventLink,
-#restaurantLink {
-    padding-left: 15px;
-    margin-left: 15px;
-    line-height: 18px;
-    color: black;
-    text-decoration: none;
-    border-left: 1px solid gray;
+.restaurantImage {
+    margin-right: 50px;
+    float: left;
 }
