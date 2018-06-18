@@ -4,6 +4,15 @@
     border-bottom: 1px black solid;
 }
 
+#headerBackground {
+    text-align: center;
+    width: 100%;
+    background: gray;
+    height: 100px;
+    background-image: url("../images/header.jpg");
+
+}
+
 .image {
     margin-bottom: 15px;
 }
