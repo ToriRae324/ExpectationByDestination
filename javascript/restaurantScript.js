@@ -60,25 +60,24 @@ $(document).ready(function () {
             for (var i = 0; i < response.restaurants.length; i++) {
 
                 // convienience vars
-                var response = response.restaurants[i].restaurant;
+                var info = response.restaurants[i].restaurant;
 
-                var name = response.name;
-                var rating = response.user_rating.aggregate_rating;
-                var cuisines = response.cuisines;
-                var thumbnail = response.thumb;
-                var pairPrice = response.average_cost_for_two;
-                var address = response.location.address;
-                var url = response.url
+                var name = info.name;
+                var rating = info.user_rating.aggregate_rating;
+                var cuisines = info.cuisines;
+                var thumbnail = info.thumb;
+                var pairPrice = info.average_cost_for_two;
+                var address = info.location.address;
+                var url = info.url
                 
 
                 console.log(name + ":" + rating);
                 console.log(cuisines, pairPrice, address);
 
-                // Parse response into Card HTML
-                var html = 
-                '<div class="row"><div class="col-md-12"><div class="card"><div class="card-body"><h5 class="card-title"><i class="fas fa-star"></i>' + name + '</h5><h6 class="card-subtitle mb-2 text-muted">' + rating + '</h6><img class="restaurantImage" src=' + thumbnail + '><ul><li>Cuisines: ' + cuisines + '</li><li>Avg. Cost for Two: $' + pairPrice + '</li><li>Address: ' + address + '</li></ul><a href=' + url + 'class="card-link">More Details</a></div></div></div></div>';
-
-                $("#restaurantDetails").append.html;
+                // Parse info into Card HTML
+                var newDiv = $("<div>")
+                newDiv.html('<div class="row"><div class="col-md-12"><div class="card"><div class="card-body"><h5 class="card-title"><i class="fas fa-star"></i>' + name + '</h5><h6 class="card-subtitle mb-2 text-muted">' + rating + '</h6><img class="restaurantImage" src=' + thumbnail + '><ul><li>Cuisines: ' + cuisines + '</li><li>Avg. Cost for Two: $' + pairPrice + '</li><li>Address: ' + address + '</li></ul><a href=' + url + 'class="card-link">More Details</a></div></div></div></div>')
+                $("#restaurantDetails").append(newDiv);
 
 
 
