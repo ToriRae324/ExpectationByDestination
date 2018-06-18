@@ -1,0 +1,31 @@
+#header {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border-bottom: 1px black solid;
+}
+
+.image {
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: 24px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#searchButton {
+    font-size: 14px;
+ 
+}
+#searchInput {
+    width: 60%;
+ 
+}
+
+#filterButtons {
+    float: right;
+}
+
+#backgroundBorder {
+    border: 1px solid gray;
+}
