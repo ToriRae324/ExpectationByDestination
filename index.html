@@ -20,10 +20,12 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
 
-    
+
     <!-- ajax -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
 
 
@@ -142,21 +144,20 @@
                     <div class="col-md-10" id="restaurantDetails">
 
                         <!-- Restaurant Details will be on cards -->
-                        <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Restaurant Name</h5>
-                                                <h6 class="card-subtitle mb-2 text-muted">
-                                                    <ul class="list-inline">
-                                                        <li class="list-inline-item">Cuisine</li>
-                                                        <li class="list-inline-item">Rating</li>
-                                                    </ul>
-                                                </h6>
-                                                <p class="card-text">Restaurant Info Blurb</p>
-                                                <a href="#" class="card-link">More Details</a>
-                                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <i class="fas fa-star"></i>Restaurant Name</h5>
+                                            <h6 class="card-subtitle mb-2 text-muted">Rating</h6>
+                                            <img class="restaurantImage" src="http://via.placeholder.com/200x200">
+                                            <ul>
+                                                <li>Cuisine: </li>
+                                                <li>Avg. Cost for Two: $</li>
+                                                <li>Address: </li>
+                                            </ul>
+                                            <a href="#" class="card-link">More Details</a>
                                         </div>
                                     </div>
                                 </div>
@@ -218,8 +219,8 @@
     </div>
 
 
-<!-- javascript links -->
-<script src="javascript/restaurantScript.js"></script>
+    <!-- javascript links -->
+    <script src="javascript/restaurantScript.js"></script>
 
 </body>
 
