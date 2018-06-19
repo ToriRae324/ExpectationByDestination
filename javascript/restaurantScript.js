@@ -173,6 +173,7 @@ function displayInfo(response, i) {
     var name = info.name;
     var rating = info.user_rating.aggregate_rating;
     var cuisines = info.cuisines;
+    
     var thumbnail = info.thumb;
     
     var pairPrice = info.average_cost_for_two;
@@ -180,11 +181,11 @@ function displayInfo(response, i) {
     var url = info.url;
     
     
-
-
+    console.log(thumbnail)
+    thumbnail = checkImages(thumbnail)
     // Parse info into Card HTML
     var newDiv = $('<div class="row restaurantItem">')
-    newDiv.html('<div class="col-md-12"><div class="card"><div class="card-body"><h5 class="card-title"><i class="fas fa-star"></i>' + name + '</h5><h6 class="card-subtitle mb-2 text-muted">' + rating + '</h6><img class="restaurantImage" src=' + thumbnail + '><ul><li><strong>Cuisines: </strong>' + cuisines + '</li><li><strong>Avg. Cost for Two: </strong>$' + pairPrice + '</li><li><strong>Address:</strong> ' + address + '</li></ul><a href=' + url + 'class="card-link" target="_blank">More Details</a></div></div></div>')
+    newDiv.html('<div class="col-md-12"><div class="card"><div class="card-body"><h5 class="card-title"><i class="fas fa-star"></i>' + name + '</h5><h6 class="card-subtitle mb-2 text-muted">' + rating + '</h6><img class="restaurantImage" src="' + thumbnail + '"><ul><li><strong>Cuisines: </strong>' + cuisines + '</li><li><strong>Avg. Cost for Two: </strong>$' + pairPrice + '</li><li><strong>Address:</strong> ' + address + '</li></ul><a href=' + url + 'class="card-link" target="_blank">More Details</a></div></div></div>')
     //append the new div into the restaurant detail section
     $("#restaurantDetails").append(newDiv);
 }
@@ -199,6 +200,7 @@ function consoleInfo(response, i) {
     console.log("Street Address:" + response.restaurants[i].restaurant.location.address)
     console.log("Website: " + response.restaurants[i].restaurant.url)
     console.log("Photo Url : " + response.restaurants[i].restaurant.photos_url)
+    console.log("thumbnail Url : '" + response.restaurants[i].restaurant.thumb + "'")
     console.log("---------------")
 }
 //populate function fills html and console with information
@@ -214,4 +216,17 @@ function displayCity(){
 $("#currentCity").text(city +", " + state)//takes city and state global variables and displays them
 }
 
+
+function checkImages(thumbnail){
+
+        if (thumbnail === ""){
+        thumbnail = "images/foodicon.png"
+        } 
+        else
+        {
+            //image src is there
+        }
+        return thumbnail
+    
+}
 })
