@@ -33,3 +33,7 @@
 #currentCity{
     margin-bottom: 25px;
 }
+
+#eventDisplay img{
+    width:100%;
+}

@@ -58,16 +58,16 @@ $(document).ready(function () {
 
             for (var i = 0; i < response.restaurants.length; i++) {
 
-                console.log("Name: " + response.restaurants[i].restaurant.name)
-                console.log("Rating: " + response.restaurants[i].restaurant.user_rating.aggregate_rating)
-                console.log("Cuisines: " + response.restaurants[i].restaurant.cuisines)
-                console.log("Average Cost for Two: $" + response.restaurants[i].restaurant.average_cost_for_two)
-                console.log("Currency: " + response.restaurants[i].restaurant.currency)
-                console.log("Located: " + response.restaurants[i].restaurant.location.locality_verbose)
-                console.log("Street Address:" + response.restaurants[i].restaurant.location.address)
-                console.log("Website: " + response.restaurants[i].restaurant.url)
-                console.log("Photo Url : " + response.restaurants[i].restaurant.photos_url)
-                console.log("---------------")
+                // console.log("Name: " + response.restaurants[i].restaurant.name)
+                // console.log("Rating: " + response.restaurants[i].restaurant.user_rating.aggregate_rating)
+                // console.log("Cuisines: " + response.restaurants[i].restaurant.cuisines)
+                // console.log("Average Cost for Two: $" + response.restaurants[i].restaurant.average_cost_for_two)
+                // console.log("Currency: " + response.restaurants[i].restaurant.currency)
+                // console.log("Located: " + response.restaurants[i].restaurant.location.locality_verbose)
+                // console.log("Street Address:" + response.restaurants[i].restaurant.location.address)
+                // console.log("Website: " + response.restaurants[i].restaurant.url)
+                // console.log("Photo Url : " + response.restaurants[i].restaurant.photos_url)
+                // console.log("---------------")
 
 
                 // conv. vars
@@ -138,16 +138,16 @@ $(document).ready(function () {
 
                     for (var i = 0; i < response.restaurants.length; i++) {
 
-                        console.log("Name: " + response.restaurants[i].restaurant.name)
-                        console.log("Rating: " + response.restaurants[i].restaurant.user_rating.aggregate_rating)
-                        console.log("Cuisines: " + response.restaurants[i].restaurant.cuisines)
-                        console.log("Average Cost for Two: $" + response.restaurants[i].restaurant.average_cost_for_two)
-                        console.log("Currency: " + response.restaurants[i].restaurant.currency)
-                        console.log("Located: " + response.restaurants[i].restaurant.location.locality_verbose)
-                        console.log("Street Address:" + response.restaurants[i].restaurant.location.address)
-                        console.log("Website: " + response.restaurants[i].restaurant.url)
-                        console.log("Photo Url : " + response.restaurants[i].restaurant.photos_url)
-                        console.log("---------------")
+                        // console.log("Name: " + response.restaurants[i].restaurant.name)
+                        // console.log("Rating: " + response.restaurants[i].restaurant.user_rating.aggregate_rating)
+                        // console.log("Cuisines: " + response.restaurants[i].restaurant.cuisines)
+                        // console.log("Average Cost for Two: $" + response.restaurants[i].restaurant.average_cost_for_two)
+                        // console.log("Currency: " + response.restaurants[i].restaurant.currency)
+                        // console.log("Located: " + response.restaurants[i].restaurant.location.locality_verbose)
+                        // console.log("Street Address:" + response.restaurants[i].restaurant.location.address)
+                        // console.log("Website: " + response.restaurants[i].restaurant.url)
+                        // console.log("Photo Url : " + response.restaurants[i].restaurant.photos_url)
+                        // console.log("---------------")
 
                         var info = response.restaurants[i].restaurant;
 
