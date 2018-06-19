@@ -6,6 +6,8 @@
 //pulled origin master
 
 
+//global variables declared
+
 var city = "Charlotte" //default on page load city
 var state = "NC" //default on page load state
 var zomatoSearch = city + ", " + state
@@ -18,26 +20,32 @@ var order = ""
 var cuisineType = ""
 
 
-
+//function run when page loads
 $(document).ready(function () {
+    displayCity();//displays the current city onto the page(in this case it is the default city)
+    //ajax command run using the url formed from the default city/state
     $.ajax({
-        url: zomatoUrl,
+        url: zomatoUrl,//gotten from global variable above currently Charlotte, NC as it is the default
         method: "GET",
         async: true,
+        //adds user key(API key) to the zomatoUrl to
         beforeSend: function (xhr) {
             xhr.setRequestHeader('user-key',
                 'b8fefdb1eb1eef0859aad5778cee33ad');
         },
     }).then(function (response) {
+        //pulls in entity_id from API will be used in next ajax function
         entityID = response.location_suggestions[0].city_id;
+        //sets variables used in next ajax function
         entityType = "city";
         count = "10";
         sort = "rating";
         order = "desc";
+        //zomatoUrl is altered to perform a top rated search on the defualt city
         zomatoUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=" + entityID + "&entity_type=" + entityType + "&count=" + count + "&sort=" + sort + "&order=" + order
-        console.log("top rated list:")
+        //ajax function is performed
         $.ajax({
-            url: zomatoUrl,
+            url: zomatoUrl,//updated zomatoUrl is used
             method: "GET",
             async: true,
             beforeSend: function (xhr) {
@@ -45,19 +53,24 @@ $(document).ready(function () {
                     'b8fefdb1eb1eef0859aad5778cee33ad');
             },
         }).then(function (response) {
-
+            //console is cleared to keep it from filling up to much
             console.clear()
+            //populate function is called with response as argument
+            //this function fills in results found from API search into the html and console
             populate(response)
         })
+        //runs when user selects the submit button after filling in city and state form
         $("#locSub").on("click", function (event) {
             event.preventDefault()
-            $("#restaurantDetails").empty()
-            city = $("#inputCity").val().trim()
-            state = $("#inputState").val().trim()
-            zomatoSearch = city + ", " + state
+            $("#restaurantDetails").empty()//clears restaurantDetails div
+            city = $("#inputCity").val().trim()//changes prev city to submitted city 
+            state = $("#inputState").val().trim()//changes prev state to submitted city
+            displayCity()//displays new city info on page
+            zomatoSearch = city + ", " + state//changes zomatoSearch to new city/state
             zomatoUrl = "https://developers.zomato.com/api/v2.1/locations?query=" + zomatoSearch + "&count=1$apikey=b8fefdb1eb1eef0859aad5778cee33ad"
+            //ajax function run
             $.ajax({
-                url: zomatoUrl,
+                url: zomatoUrl,//pulls updated zomatoUrl
                 method: "GET",
                 async: true,
                 beforeSend: function (xhr) {
@@ -65,15 +78,17 @@ $(document).ready(function () {
                         'b8fefdb1eb1eef0859aad5778cee33ad');
                 },
             }).then(function (response) {
+                //updates entity id
                 entityID = response.location_suggestions[0].city_id;
                 entityType = "city";
                 count = "10";
                 sort = "rating";
                 order = "desc";
+                //searches top rated list from api using new entity_id so it will be of the new city
                 zomatoUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=" + entityID + "&entity_type=" + entityType + "&count=" + count + "&sort=" + sort + "&order=" + order
                 console.log("top rated list:")
                 $.ajax({
-                    url: zomatoUrl,
+                    url: zomatoUrl,//searches with updated url
                     method: "GET",
                     async: true,
                     beforeSend: function (xhr) {
@@ -81,19 +96,22 @@ $(document).ready(function () {
                             'b8fefdb1eb1eef0859aad5778cee33ad');
                     },
                 }).then(function (response) {
-                    console.clear()
-                    populate(response)
+                    console.clear()//clears console
+                    populate(response)//calls populate function with new information of new city
                 })
             })
         })
+        //run when a cuisine option is clicked from the cuisine dropdown menu
         $(".cuisineBtn").on("click", function (event) {
             event.preventDefault()
+            //clears restaurant details div
             $("#restaurantDetails").empty()
-            cuisineType = $(this).val()
+            cuisineType = $(this).val()//gathers cuisine type from the value of the option clicked
             entityType = "city"
             count = "10"
             sort = "rating"
             order = "desc"
+            //updates url to do a cuisine search
             zomatoUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=" + entityID + "&entity_type=" + entityType + "&count=" + count + "&cuisines=" + cuisineType + "&sort=" + sort + "&order=" + order
             $.ajax({
                 url: zomatoUrl,
@@ -104,10 +122,36 @@ $(document).ready(function () {
                         'b8fefdb1eb1eef0859aad5778cee33ad');
                 },
             }).then(function (response) {
-                console.clear()
-                populate(response)
+                console.clear()//clears console
+                populate(response)//fills console and html
 
             })
+            //when top rated button is clicked it will populate the html and console with the ten highest rated restaurants of that city
+            $("#topRated").on("click", function (event) {
+                event.preventDefault()
+                //clears restaurant details div
+                $("#restaurantDetails").empty()
+                
+                entityType = "city"
+                count = "10"
+                sort = "rating"
+                order = "desc"
+                //updates url to do a top rated search on the city you are currently in
+                zomatoUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=" + entityID + "&entity_type=" + entityType + "&count=" + count + "&sort=" + sort + "&order=" + order
+                $.ajax({
+                    url: zomatoUrl,
+                    method: "GET",
+                    async: true,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('user-key',
+                            'b8fefdb1eb1eef0859aad5778cee33ad');
+                    },
+                }).then(function (response) {
+                    console.clear()//clears console
+                    populate(response)//fills console and html
+    
+                })
+            
         })
     })
 });
@@ -117,31 +161,35 @@ $("#restaurantsBtn").on("click", function () {
     $("#restaurantDisplay").css("display", "flex");
     $("#eventDisplay").hide();
 });
-
 $("#eventsBtn").on("click", function () {
     $("#eventDisplay").css("display", "flex");
     $("#restaurantDisplay").hide();
 });
-
+//dunction used to display info, arguments: ajax response and for loop iterator
 function displayInfo(response, i) {
+    //declares and initalizes loval variables of info that we want to display from the API
     var info = response.restaurants[i].restaurant;
 
     var name = info.name;
     var rating = info.user_rating.aggregate_rating;
     var cuisines = info.cuisines;
+    
     var thumbnail = info.thumb;
+    
     var pairPrice = info.average_cost_for_two;
     var address = info.location.address;
     var url = info.url;
-
-
-
+    
+    
+    console.log(thumbnail)
+    thumbnail = checkImages(thumbnail)
     // Parse info into Card HTML
     var newDiv = $('<div class="row restaurantItem">')
-    newDiv.html('<div class="col-md-12"><div class="card"><div class="card-body"><h5 class="card-title"><i class="fas fa-star"></i>' + name + '</h5><h6 class="card-subtitle mb-2 text-muted">' + rating + '</h6><img class="restaurantImage" src=' + thumbnail + '><ul><li><strong>Cuisines: </strong>' + cuisines + '</li><li><strong>Avg. Cost for Two: </strong>$' + pairPrice + '</li><li><strong>Address:</strong> ' + address + '</li></ul><a href=' + url + 'class="card-link" target="_blank">More Details</a></div></div></div>')
-
+    newDiv.html('<div class="col-md-12"><div class="card"><div class="card-body"><h5 class="card-title"><i class="fas fa-star"></i>' + name + '</h5><h6 class="card-subtitle mb-2 text-muted">' + rating + '</h6><img class="restaurantImage" src="' + thumbnail + '"><ul><li><strong>Cuisines: </strong>' + cuisines + '</li><li><strong>Avg. Cost for Two: </strong>$' + pairPrice + '</li><li><strong>Address:</strong> ' + address + '</li></ul><a href=' + url + 'class="card-link" target="_blank">More Details</a></div></div></div>')
+    //append the new div into the restaurant detail section
     $("#restaurantDetails").append(newDiv);
 }
+//function that fills console with information pulled from the api, arguments: response of ajax function and for loop iterator
 function consoleInfo(response, i) {
     console.log("Name: " + response.restaurants[i].restaurant.name)
     console.log("Rating: " + response.restaurants[i].restaurant.user_rating.aggregate_rating)
@@ -151,14 +199,34 @@ function consoleInfo(response, i) {
     console.log("Located: " + response.restaurants[i].restaurant.location.locality_verbose)
     console.log("Street Address:" + response.restaurants[i].restaurant.location.address)
     console.log("Website: " + response.restaurants[i].restaurant.url)
-    console.log("Photo Thumbnail Url : " + response.restaurants[i].restaurant.thumb)
+    console.log("Photo Url : " + response.restaurants[i].restaurant.photos_url)
+    console.log("thumbnail Url : '" + response.restaurants[i].restaurant.thumb + "'")
     console.log("---------------")
 }
+//populate function fills html and console with information
 function populate(response) {
+    //creates for loop to allow all objects to be pulled from the api
     for (var i = 0; i < response.restaurants.length; i++) {
-        consoleInfo(response, i)
-        displayInfo(response, i)
+        consoleInfo(response, i)//calls console info to fill console
+        displayInfo(response, i)//calls displayInfo to fill html page
     }
+}
+//function takes current city the user is on and displays it in the currentCity span
+function displayCity(){
+$("#currentCity").text(city +", " + state)//takes city and state global variables and displays them
 }
 
 
+function checkImages(thumbnail){
+
+        if (thumbnail === ""){
+        thumbnail = "images/foodicon.png"
+        } 
+        else
+        {
+            //image src is there
+        }
+        return thumbnail
+    
+}
+})
