@@ -79,14 +79,13 @@ $(document).ready(function () {
                 var thumbnail = info.thumb;
                 var pairPrice = info.average_cost_for_two;
                 var address = info.location.address;
-
                 var url = info.url;
                 
 
 
                 // Parse info into Card HTML
                 var newDiv = $('<div class="row restaurantItem">')
-                newDiv.html('<div class="col-md-12"><div class="card"><div class="card-body"><h5 class="card-title"><i class="fas fa-star"></i>' + name + '</h5><h6 class="card-subtitle mb-2 text-muted">' + rating + '</h6><img class="restaurantImage" src=' + thumbnail + '><ul><li>Cuisines: ' + cuisines + '</li><li>Avg. Cost for Two: $' + pairPrice + '</li><li>Address: ' + address + '</li></ul><a href=' + url + 'class="card-link">More Details</a></div></div></div>')
+                newDiv.html('<div class="col-md-12"><div class="card"><div class="card-body"><h5 class="card-title"><i class="fas fa-star"></i>' + name + '</h5><h6 class="card-subtitle mb-2 text-muted">' + rating + '</h6><img class="restaurantImage" src=' + thumbnail + '><ul><li><strong>Cuisines: </strong>' + cuisines + '</li><li><strong>Avg. Cost for Two: </strong>$' + pairPrice + '</li><li><strong>Address:</strong> ' + address + '</li></ul><a href=' + url + 'class="card-link" target="_blank">More Details</a></div></div></div>')
 
                 $("#restaurantDetails").append(newDiv);
             }
