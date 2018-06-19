@@ -6,6 +6,7 @@
 //pulled origin master
 
 
+//global variables declared
 var city = "Charlotte" //default on page load city
 var state = "NC" //default on page load state
 var zomatoSearch = city + ", " + state
@@ -132,10 +133,12 @@ function displayInfo(response, i) {
     var rating = info.user_rating.aggregate_rating;
     var cuisines = info.cuisines;
     var thumbnail = info.thumb;
+    
     var pairPrice = info.average_cost_for_two;
     var address = info.location.address;
     var url = info.url;
-
+    
+    
 
 
     // Parse info into Card HTML
