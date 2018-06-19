@@ -98,6 +98,10 @@ ul {
     
 }
 
+.btn-light {
+    margin-bottom: 5px;
+}
+
 /* extra */
 .intersecting-circles-spinner, .intersecting-circles-spinner * {
     box-sizing: border-box;
