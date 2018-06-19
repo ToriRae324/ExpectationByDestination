@@ -151,7 +151,7 @@ function consoleInfo(response, i) {
     console.log("Located: " + response.restaurants[i].restaurant.location.locality_verbose)
     console.log("Street Address:" + response.restaurants[i].restaurant.location.address)
     console.log("Website: " + response.restaurants[i].restaurant.url)
-    console.log("Photo Url : " + response.restaurants[i].restaurant.photos_url)
+    console.log("Photo Thumbnail Url : " + response.restaurants[i].restaurant.thumb)
     console.log("---------------")
 }
 function populate(response) {
