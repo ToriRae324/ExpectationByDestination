@@ -14,7 +14,12 @@
 }
 
 .image {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+.imageItem {
+    height: 160px;
+    width: 160px;
 }
 
 .restaurantImage {
@@ -40,4 +45,9 @@
     height: 500px;
     overflow: scroll;
 
+}
+
+.sideImages {
+    padding-top: 58px;
+    
 }
