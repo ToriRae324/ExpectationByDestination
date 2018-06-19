@@ -105,10 +105,10 @@ ul {
     
 }
 
-<<<<<<< HEAD
 .defaultImages {
     border: 2px solid #839496;
     border-radius: 6px;
+    margin-left: 30px;
 }
 
 .event-image {
@@ -161,7 +161,6 @@ ul {
     border-radius: 10px;
 }
 /*****************************/
-=======
 /* extra */
 .intersecting-circles-spinner, .intersecting-circles-spinner * {
     box-sizing: border-box;
@@ -236,4 +235,3 @@ ul {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
->>>>>>> ef39b7ad7c01a299297836f7aa98b821a4d40caf
