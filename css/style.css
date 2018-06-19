@@ -41,6 +41,44 @@ ul {
     margin-bottom: 15px;
 }
 
+#filterCol {
+    height: 100px;
+    display: -webkit-inline-box;
+}
+
+
+
+#concertFilter {
+    margin-left: 40px;
+}
+
+#sportFilter,
+#artsTheaterFilter,
+#familyFilter,
+#vipFilter,
+#dealsFilter {
+    margin-left: 60px;
+
+}
+
+#concertFilter:hover,
+#sportFilter:hover,
+#artsTheaterFilter:hover,
+#familyFilter:hover,
+#vipFilter:hover,
+#dealsFilter:hover {
+    color: blanchedalmond;
+
+}
+
+#eventCard {
+    width: 80%;
+}
+
+#eventCol img {
+    width: 100%;
+}
+
 #eventDisplay {
     display: none;
 }
