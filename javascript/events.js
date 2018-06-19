@@ -1,12 +1,13 @@
 //ticketMaster API key: cdS8dgGbDGzl3TTP71wEQpLkCA8G95Ig
 
 $(document).ready(function(){
-
-    var city = "";
-    var state = "";
-    // var eventType = "";
-
-
+    
+    var city = "Charlotte";
+    var state = "NC";
+    var eventType = "";
+    var family = 0;
+    
+    
     //accessibility
     //classifications
     //id
@@ -27,15 +28,14 @@ $(document).ready(function(){
     //endDateTime
     //size
 
+    
+    
 
-
-
-
-
+    
+    
     function eventSearch(){
         
-        
-        var ticketMasterUrl = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + city + "&stateCode=" + state + "&keyword=" + "&apikey=cdS8dgGbDGzl3TTP71wEQpLkCA8G95Ig"
+        var ticketMasterUrl = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + city + "&stateCode=" + state + "&classificationName=" + eventType + "&apikey=cdS8dgGbDGzl3TTP71wEQpLkCA8G95Ig"
         $.ajax({
             url: ticketMasterUrl,
             method: "Get",
@@ -108,19 +108,42 @@ $(document).ready(function(){
                 divOffSetStatus = 0;
             }
 
+
         };
     });
+
 };
-    
+eventSearch();
+
     $("#locSub").on("click", function(event){
         event.preventDefault();
         city = $("#inputCity").val();
         state = $("#inputState").val();
+        eventType = "";
         // eventType = $("#event-type-input").val();
         $("#eventRow").html("");
         eventSearch();
         
     });
+
+    $(".eventFilters").on("click", function(){
+        
+        //filter
+        eventType = $(this).data("value");
+        $("#eventRow").empty();
+        eventSearch();
+    });
+
+    
+    
+    
+    
+    
+    // $("#familyFilter").on("click", function(){
+    //     $("eventRow").empty();
+    //     family = 1;
+    //     eventSearch();   
+    // });
 
         
 
