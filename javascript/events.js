@@ -89,7 +89,7 @@ function eventSearch(){
             eventDiv.append(playDates);
             eventDiv.append(eventInfo);
 
-            $("#eventDisplay").append(eventDiv);
+            $("#eventRow").append(eventDiv);
         };
     });
 };
@@ -99,6 +99,7 @@ function eventSearch(){
         city = $("#inputCity").val();
         state = $("#inputState").val();
         // eventType = $("#event-type-input").val();
+        $("#eventRow").html("");
         eventSearch();
         
     });
