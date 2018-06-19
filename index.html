@@ -30,7 +30,7 @@
 
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-    crossorigin="anonymous">
+        crossorigin="anonymous">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Quicksand" rel="stylesheet">
@@ -240,80 +240,71 @@
         <div class="row" id="eventDisplay">
 
             <!-- Events -->
-            <div class="col-md-9">
-
+            <div class="col-md-12">
                 <div class="row">
 
-
-                    <div class="col-md-3">
-                        <div class="btn-group-vertical" id="filterButtons">
-                            <button>Near Trip Location</button>
-                            <button>By Event Name</button>
-                            <button>By Category</button>
-                        </div>
+                    <!-- Filters -->
+                    <div class="col-sm-12" id="filterCol">
+                        <h5 id="concertFilter">Concerts</h5>
+                        <h5 id="sportFilter">Sports</h5>
+                        <h5 id="artsTheaterFilter">Arts & Theater</h5>
+                        <h5 id="familyFilter">Family</h5>
+                        <h5 id="vipFilter">VIP</h5>
+                        <h5 id="dealsFilter">Deals</h5>
+                    </div>
+                </div>
+                <!-- Event Images -->
+                <div class="row">
+                    <div class="col-md-9" id="eventCol">
+                        <div id="eventCard"></div>
                     </div>
 
-                    <div class="col-md-9">
+                    <div class="col-md-3">
 
-                        <label for="labelEvent">Event</label>
-                        <input type="text" class="form-control" id="inputEvent">
-                        <button type="submit" class="btn btn-primary" id="eventSubmitButton">Submit</button>
+                        <!-- Image 1 -->
+                        <div class="row image">
+                            <div class="col-md-12">
+                                <a href="https://placeholder.com">
+                                    <img src="http://via.placeholder.com/200x200">
+                                </a>
+                            </div>
+                        </div>
 
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Event Name</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Event Type</h6>
-                                <p class="card-text">Display info</p>
-                                <a href="#" class="card-link">More Details</a>
+                        <!-- Image 2 -->
+                        <div class="row image">
+                            <div class="col-md-12">
+                                <a href="https://placeholder.com">
+                                    <img src="http://via.placeholder.com/200x200">
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Image 3 -->
+                        <div class="row image">
+                            <div class="col-md-12">
+                                <a href="https://placeholder.com">
+                                    <img src="http://via.placeholder.com/200x200">
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Image 4 -->
+                        <div class="row image">
+                            <div class="col-md-12">
+                                <a href="https://placeholder.com">
+                                    <img src="http://via.placeholder.com/200x200">
+                                </a>
                             </div>
                         </div>
                     </div>
-
                 </div>
+
+
 
             </div>
 
-            <!-- Event Images -->
-            <div class="col-md-3 text-right">
-
-                <!-- Image 1 -->
-                <div class="row image">
-                    <div class="col-md-12">
-                        <a href="https://placeholder.com">
-                            <img src="http://via.placeholder.com/200x200">
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Image 2 -->
-                <div class="row image">
-                    <div class="col-md-12">
-                        <a href="https://placeholder.com">
-                            <img src="http://via.placeholder.com/200x200">
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Image 3 -->
-                <div class="row image">
-                    <div class="col-md-12">
-                        <a href="https://placeholder.com">
-                            <img src="http://via.placeholder.com/200x200">
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Image 4 -->
-                <div class="row image">
-                    <div class="col-md-12">
-                        <a href="https://placeholder.com">
-                            <img src="http://via.placeholder.com/200x200">
-                        </a>
-                    </div>
-                </div>
 
 
-            </div>
             <!-- End Event Images -->
 
 
@@ -325,12 +316,14 @@
     </div>
 
 
-    
+
 
     <!-- Other Links -->
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
 
     <!-- javascript links -->
     <script src="javascript/restaurantScript.js"></script>
