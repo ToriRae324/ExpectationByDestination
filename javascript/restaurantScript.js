@@ -20,6 +20,7 @@ var cuisineType = ""
 
 
 $(document).ready(function () {
+    displayCity();
     $.ajax({
         url: zomatoUrl,
         method: "GET",
@@ -54,6 +55,7 @@ $(document).ready(function () {
             $("#restaurantDetails").empty()
             city = $("#inputCity").val().trim()
             state = $("#inputState").val().trim()
+            displayCity()
             zomatoSearch = city + ", " + state
             zomatoUrl = "https://developers.zomato.com/api/v2.1/locations?query=" + zomatoSearch + "&count=1$apikey=b8fefdb1eb1eef0859aad5778cee33ad"
             $.ajax({
@@ -159,6 +161,9 @@ function populate(response) {
         consoleInfo(response, i)
         displayInfo(response, i)
     }
+}
+function displayCity(){
+$("#currentCity").text(city +", " + state)
 }
 
 
