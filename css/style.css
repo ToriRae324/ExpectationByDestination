@@ -1,3 +1,11 @@
+body {
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+ul {
+    font-family: 'Quicksand', sans-serif;
+}
+
 #header {
     margin-top: 25px;
     margin-bottom: 25px;
@@ -31,6 +39,40 @@
 
 .restaurantItem {
     margin-bottom: 15px;
+}
+
+#filterCol {
+    height: 100px;
+    display: -webkit-inline-box;
+}
+
+
+
+#concertFilter {
+    margin-left: 40px;
+}
+
+#sportFilter,
+#artsTheaterFilter,
+#familyFilter,
+#vipFilter,
+#dealsFilter {
+    margin-left: 60px;
+
+}
+
+#concertFilter:hover,
+#sportFilter:hover,
+#artsTheaterFilter:hover,
+#familyFilter:hover,
+#vipFilter:hover,
+#dealsFilter:hover {
+    color: blanchedalmond;
+
+}
+
+#eventCard {
+    width: 80%;
 }
 
 #eventDisplay {
