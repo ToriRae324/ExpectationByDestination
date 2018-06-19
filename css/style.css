@@ -30,10 +30,32 @@
 
 #filterCol {
     height: 100px;
+    display: -webkit-inline-box;
 }
 
-h5 {
-    width: auto;
+
+
+#concertFilter {
+    margin-left: 40px;
+}
+
+#sportFilter,
+#artsTheaterFilter,
+#familyFilter,
+#vipFilter,
+#dealsFilter {
+    margin-left: 60px;
+
+}
+
+#concertFilter:hover,
+#sportFilter:hover,
+#artsTheaterFilter:hover,
+#familyFilter:hover,
+#vipFilter:hover,
+#dealsFilter:hover {
+    color: blanchedalmond;
+
 }
 
 #eventCard {

@@ -30,7 +30,7 @@
 
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-    crossorigin="anonymous">
+        crossorigin="anonymous">
 
 
 
@@ -149,16 +149,16 @@
                                     Cuisines
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                    <button class="dropdown-item" value"55">Italian</button>
-                                    <button class="dropdown-item" value"1">Americal</button>
-                                    <button class="dropdown-item" value"40">Fast Food</button>
-                                    <button class="dropdown-item" value"304">Sandwiches</button>
-                                    <button class="dropdown-item" value"82">Pizza</button>
-                                    <button class="dropdown-item" value"73">Mexican</button>
-                                    <button class="dropdown-item" value"25">Chinese</button>
-                                    <button class="dropdown-item" value"168">Burgers</button>
-                                    <button class="dropdown-item" value"100">Desserts</button>
-                                    <button class="dropdown-item" value"30">Cafe</button>
+                                    <button class="dropdown-item" value "55">Italian</button>
+                                    <button class="dropdown-item" value "1">Americal</button>
+                                    <button class="dropdown-item" value "40">Fast Food</button>
+                                    <button class="dropdown-item" value "304">Sandwiches</button>
+                                    <button class="dropdown-item" value "82">Pizza</button>
+                                    <button class="dropdown-item" value "73">Mexican</button>
+                                    <button class="dropdown-item" value "25">Chinese</button>
+                                    <button class="dropdown-item" value "168">Burgers</button>
+                                    <button class="dropdown-item" value "100">Desserts</button>
+                                    <button class="dropdown-item" value "30">Cafe</button>
                                 </div>
                             </div>
                             <button class="btn btn-light">More</button>
@@ -248,66 +248,71 @@
         <div class="row" id="eventDisplay">
 
             <!-- Events -->
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="row">
 
-                <!-- Filters -->
-                    <div class="col-sm-12" id="filterCol">                       
-                        <h5 id="concertFilter" >Concerts</h5>
-                        <h5 id="sportFilter" >Sports</h5>
-                        <h5 id="artsTheaterFilter" >Arts & Theater</h5>
-                        <h5 id="familyFilter" >Family</h5>
-                        <h5 id="vipFilter" >VIP</h5>
-                        <h5 id="dealsFilter" >Deals</h5>
+                    <!-- Filters -->
+                    <div class="col-sm-12" id="filterCol">
+                        <h5 id="concertFilter">Concerts</h5>
+                        <h5 id="sportFilter">Sports</h5>
+                        <h5 id="artsTheaterFilter">Arts & Theater</h5>
+                        <h5 id="familyFilter">Family</h5>
+                        <h5 id="vipFilter">VIP</h5>
+                        <h5 id="dealsFilter">Deals</h5>
                     </div>
                 </div>
+                <!-- Event Images -->
                 <div class="row">
-                    <div id="eventCard"></div>
+                    <div class="col-md-9" id="eventCol">
+                        <div id="eventCard"></div>
+                    </div>
+                    
+                    <div class="col-md-3">
+
+                        <!-- Image 1 -->
+                        <div class="row image">
+                            <div class="col-md-12">
+                                <a href="https://placeholder.com">
+                                    <img src="http://via.placeholder.com/200x200">
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Image 2 -->
+                        <div class="row image">
+                            <div class="col-md-12">
+                                <a href="https://placeholder.com">
+                                    <img src="http://via.placeholder.com/200x200">
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Image 3 -->
+                        <div class="row image">
+                            <div class="col-md-12">
+                                <a href="https://placeholder.com">
+                                    <img src="http://via.placeholder.com/200x200">
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Image 4 -->
+                        <div class="row image">
+                            <div class="col-md-12">
+                                <a href="https://placeholder.com">
+                                    <img src="http://via.placeholder.com/200x200">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+
+
             </div>
 
 
-            <!-- Event Images -->
-            <div class="col-md-3 text-right">
 
-                <!-- Image 1 -->
-                <div class="row image">
-                    <div class="col-md-12">
-                        <a href="https://placeholder.com">
-                            <img src="http://via.placeholder.com/200x200">
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Image 2 -->
-                <div class="row image">
-                    <div class="col-md-12">
-                        <a href="https://placeholder.com">
-                            <img src="http://via.placeholder.com/200x200">
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Image 3 -->
-                <div class="row image">
-                    <div class="col-md-12">
-                        <a href="https://placeholder.com">
-                            <img src="http://via.placeholder.com/200x200">
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Image 4 -->
-                <div class="row image">
-                    <div class="col-md-12">
-                        <a href="https://placeholder.com">
-                            <img src="http://via.placeholder.com/200x200">
-                        </a>
-                    </div>
-                </div>
-
-
-            </div>
             <!-- End Event Images -->
 
 
@@ -319,12 +324,14 @@
     </div>
 
 
-    
+
 
     <!-- Other Links -->
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
 
     <!-- javascript links -->
     <script src="javascript/restaurantScript.js"></script>
