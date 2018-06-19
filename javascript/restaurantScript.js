@@ -54,7 +54,7 @@ $(document).ready(function () {
             },
         }).then(function (response) {
             //console is cleared to keep it from filling up to much
-            console.clear()
+            // console.clear()
             //populate function is called with response as argument
             //this function fills in results found from API search into the html and console
             populate(response)
@@ -96,7 +96,7 @@ $(document).ready(function () {
                             'b8fefdb1eb1eef0859aad5778cee33ad');
                     },
                 }).then(function (response) {
-                    console.clear()//clears console
+                    // console.clear()//clears console
                     populate(response)//calls populate function with new information of new city
                 })
             })
@@ -122,7 +122,7 @@ $(document).ready(function () {
                         'b8fefdb1eb1eef0859aad5778cee33ad');
                 },
             }).then(function (response) {
-                console.clear()//clears console
+                // console.clear()//clears console
                 populate(response)//fills console and html
 
             })
@@ -147,7 +147,7 @@ $(document).ready(function () {
                             'b8fefdb1eb1eef0859aad5778cee33ad');
                     },
                 }).then(function (response) {
-                    console.clear()//clears console
+                    // console.clear()//clears console
                     populate(response)//fills console and html
     
                 })

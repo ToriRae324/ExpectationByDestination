@@ -32,42 +32,48 @@ $(document).ready(function(){
 
 
 
-function eventSearch(){
+    function eventSearch(){
+        
+        
+        var ticketMasterUrl = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + city + "&stateCode=" + state + "&keyword=" + "&apikey=cdS8dgGbDGzl3TTP71wEQpLkCA8G95Ig"
+        $.ajax({
+            url: ticketMasterUrl,
+            method: "Get",
+            async:true,
+            dataType: "json",
+        }).then(function (response) {
+            console.log(response);
+            
+            
+            
+            var results = response._embedded.events;
+            
+            var sorted = results.sort(function (a, b){
+                return moment(a.dates.start.dateTime).format("x") - moment(b.dates.start.dateTime).format("x");
+            });
+            console.log(sorted);
 
-    
-    var ticketMasterUrl = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + city + "&stateCode=" + state + "&keyword=" + "&apikey=cdS8dgGbDGzl3TTP71wEQpLkCA8G95Ig"
-    $.ajax({
-        url: ticketMasterUrl,
-        method: "Get",
-        async:true,
-        dataType: "json",
-    }).then(function (response) {
-        console.log(response);
-        
-
-        
-        var results = response._embedded.events;
-        
         for (var i = 0; i < results.length; i++){
             
             
             //creating a div with all its components
-            var eventDiv = $("<div class='col-md-4'>");
+            var eventDiv = $("<div class='col-md-5'>");
+            var eventDivOffset = $("<div class='col-md-1>");
             
             var newP = $("<p class='event-name'>").text(results[i].name);
             var eventSpace = $("<img class='event-image'>");
             eventSpace.attr("src", results[i].images[4].url);
             var venue = $("<p class='venue-name'>").text(results[i]._embedded.venues[0].name);
             var priceRange = $("<p class='event-info'>").text("Tickets from: $" + results[i].priceRanges[0].min + " - $" + results[i].priceRanges[0].max);
-
+            
             // var eventDate = moment().format(results[i].dates.start.localDate, "YYYY/DD/MM");
             // var eventTime = moment().format(results[i].dates.start.localTime,"HH:mm:ss");
 
             // var localDate = moment(eventDate).format("MM/DD/YYYY");
             // var localTime = moment(eventTime).format("hh:mm a");
 
-            var dateTimeStr = results[i].dates.start.localDate + " " + results[i].dates.start.localTime;
-            var dateTimeMoment = moment(dateTimeStr, "YYYY/DD/MM hh:mm");
+            // var dateTimeStr = results[i].dates.start.localDate + " " + results[i].dates.start.localTime;
+            var dateTimeMoment = moment(results[i].dates.start.dateTime);
 
             var localDate = dateTimeMoment.format("MM/DD/YYYY");
             var localTime = dateTimeMoment.format("hh:mm a");
@@ -89,7 +95,19 @@ function eventSearch(){
             eventDiv.append(playDates);
             eventDiv.append(eventInfo);
 
-            $("#eventRow").append(eventDiv);
+            var divOffSetStatus = 0;
+            if (divOffSetStatus === 0){
+                $("#eventRow").append(eventDivOffset);
+                $("#eventRow").append(eventDiv);
+                divOffSetStatus = 1;
+            }
+
+            else if (divOffSetStatus === 1){
+                $("#eventRow").append(eventDiv);
+                $("#eventRow").append(eventDivOffset);
+                divOffSetStatus = 0;
+            }
+
         };
     });
 };
@@ -103,6 +121,7 @@ function eventSearch(){
         eventSearch();
         
     });
+
         
 
 
