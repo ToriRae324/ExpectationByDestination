@@ -54,7 +54,7 @@ $(document).ready(function () {
             },
         }).then(function (response) {
             //console is cleared to keep it from filling up to much
-            console.clear()
+            //console.clear()
             //populate function is called with response as argument
             //this function fills in results found from API search into the html and console
             populate(response)
@@ -96,7 +96,7 @@ $(document).ready(function () {
                             'b8fefdb1eb1eef0859aad5778cee33ad');
                     },
                 }).then(function (response) {
-                    console.clear()//clears console
+                    //console.clear()//clears console
                     populate(response)//calls populate function with new information of new city
                 })
             })
@@ -122,10 +122,39 @@ $(document).ready(function () {
                         'b8fefdb1eb1eef0859aad5778cee33ad');
                 },
             }).then(function (response) {
-                console.clear()//clears console
+                //console.clear()//clears console
                 populate(response)//fills console and html
 
             })
+        })
+
+            $(".establishmentBtn").on("click", function (event) {
+                event.preventDefault()
+                
+                //clears restaurant details div
+                $("#restaurantDetails").empty()
+                establishment_type = $(this).val()//gathers establishment type from the value of the option clicked
+                entityType = "city"
+                count = "10"
+                sort = "rating"
+                order = "desc"
+                //updates url to do a establishment search
+                zomatoUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=" + entityID + "&entity_type=" + entityType + "&count=" + count + "&establishment_type=" + establishment_type + "&sort=" + sort + "&order=" + order
+                $.ajax({
+                    url: zomatoUrl,
+                    method: "GET",
+                    async: true,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('user-key',
+                            'b8fefdb1eb1eef0859aad5778cee33ad');
+                    },
+                }).then(function (response) {
+                    //console.clear()//clears console
+                    populate(response)//fills console and html
+    
+                })
+            })
+
             //when top rated button is clicked it will populate the html and console with the ten highest rated restaurants of that city
             $("#topRated").on("click", function (event) {
                 event.preventDefault()
@@ -147,14 +176,14 @@ $(document).ready(function () {
                             'b8fefdb1eb1eef0859aad5778cee33ad');
                     },
                 }).then(function (response) {
-                    console.clear()//clears console
+                    //console.clear()//clears console
                     populate(response)//fills console and html
     
                 })
             
         })
     })
-});
+
 
 // on click show/hide restaurants/events
 $("#restaurantsBtn").on("click", function () {
@@ -181,7 +210,7 @@ function displayInfo(response, i) {
     var url = info.url;
     
     
-    console.log(thumbnail)
+    //console.log(thumbnail)
     thumbnail = checkImages(thumbnail)
     // Parse info into Card HTML
     var newDiv = $('<div class="row restaurantItem">')
@@ -207,7 +236,7 @@ function consoleInfo(response, i) {
 function populate(response) {
     //creates for loop to allow all objects to be pulled from the api
     for (var i = 0; i < response.restaurants.length; i++) {
-        consoleInfo(response, i)//calls console info to fill console
+        //consoleInfo(response, i)//calls console info to fill console
         displayInfo(response, i)//calls displayInfo to fill html page
     }
 }
@@ -229,4 +258,6 @@ function checkImages(thumbnail){
         return thumbnail
     
 }
-})
+});
+
+
