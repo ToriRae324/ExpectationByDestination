@@ -32,7 +32,10 @@ h2 {
 }
 
 #filterButtons {
-    float: right;
+}
+
+#eventCard {
+    width: 80%;
 }
 
 #backgroundBorder {
