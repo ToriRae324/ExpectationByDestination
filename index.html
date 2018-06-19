@@ -32,6 +32,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
         crossorigin="anonymous">
 
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Quicksand" rel="stylesheet">
+
 
 
 </head>
@@ -44,13 +47,13 @@
         <!-- Header Row -->
         <div class="row" id="header">
             <!-- Title -->
-            <div class="col-md-7">
+            <div class="col-md-7" id="title">
                 <h1>Expectations by Destination</h1>
 
                 <div class="row">
                     <div class="col-md-12">
-                        <button class="btn btn-light" id="restaurantsBtn">Restaurants</button>
-                        <button class="btn btn-light" id="eventsBtn">Events</button>
+                        <button class="btn btn-danger" id="restaurantsBtn">Restaurants</button>
+                        <button class="btn btn-danger" id="eventsBtn">Events</button>
                     </div>
                 </div>
             </div>
@@ -149,16 +152,16 @@
                                     Cuisines
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                    <button class="dropdown-item" value "55">Italian</button>
-                                    <button class="dropdown-item" value "1">Americal</button>
-                                    <button class="dropdown-item" value "40">Fast Food</button>
-                                    <button class="dropdown-item" value "304">Sandwiches</button>
-                                    <button class="dropdown-item" value "82">Pizza</button>
-                                    <button class="dropdown-item" value "73">Mexican</button>
-                                    <button class="dropdown-item" value "25">Chinese</button>
-                                    <button class="dropdown-item" value "168">Burgers</button>
-                                    <button class="dropdown-item" value "100">Desserts</button>
-                                    <button class="dropdown-item" value "30">Cafe</button>
+                                    <button class="dropdown-item cuisineBtn" value="55">Italian</button>
+                                    <button class="dropdown-item cuisineBtn" value="1">Americal</button>
+                                    <button class="dropdown-item cuisineBtn" value="40">Fast Food</button>
+                                    <button class="dropdown-item cuisineBtn" value="304">Sandwiches</button>
+                                    <button class="dropdown-item cuisineBtn" value="82">Pizza</button>
+                                    <button class="dropdown-item cuisineBtn" value="73">Mexican</button>
+                                    <button class="dropdown-item cuisineBtn" value="25">Chinese</button>
+                                    <button class="dropdown-item cuisineBtn" value="168">Burgers</button>
+                                    <button class="dropdown-item cuisineBtn" value="100">Desserts</button>
+                                    <button class="dropdown-item cuisineBtn" value="30">Cafe</button>
                                 </div>
                             </div>
                             <button class="btn btn-light">More</button>
@@ -194,46 +197,35 @@
             </div>
 
             <!-- Food Images -->
-            <!-- <div class="col-md-3 text-right">
+            <div class="col-md-3 text-center sideImages">
 
-                Image 1
+                <!-- Image 1 -->
                 <div class="row image">
                     <div class="col-md-12">
-                        <a href="https://placeholder.com">
-                            <img src="http://via.placeholder.com/200x200">
+                            <img class="imageItem" src="images/sandwich.jpg">
                         </a>
                     </div>
                 </div>
 
-                Image 2
+                <!-- Image 2 -->
                 <div class="row image">
                     <div class="col-md-12">
-                        <a href="https://placeholder.com">
-                            <img src="http://via.placeholder.com/200x200">
+                            <img class="imageItem" src="images/cookies.jpg">
                         </a>
                     </div>
                 </div>
 
-                Image 3
+                <!-- Image 3 -->
                 <div class="row image">
                     <div class="col-md-12">
-                        <a href="https://placeholder.com">
-                            <img src="http://via.placeholder.com/200x200">
-                        </a>
-                    </div>
-                </div>
-
-                Image 4
-                <div class="row image">
-                    <div class="col-md-12">
-                        <a href="https://placeholder.com">
-                            <img src="http://via.placeholder.com/200x200">
+                            <img class="imageItem" src="images/fries.jpg">
                         </a>
                     </div>
                 </div>
 
 
-             </div> -->
+
+             </div>
             <!-- End Food Images -->
 
         </div>
@@ -266,7 +258,7 @@
                     <div class="col-md-9" id="eventCol">
                         <div id="eventCard"></div>
                     </div>
-                    
+
                     <div class="col-md-3">
 
                         <!-- Image 1 -->
