@@ -14,26 +14,40 @@
 }
 
 .image {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+.imageItem {
+    height: 160px;
+    width: 160px;
 }
 
 .restaurantImage {
     margin-right: 50px;
     float: left;
+    height: 100px;
+    width: 100px;
 }
 
 .restaurantItem {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
-#eventDisplay{
+#eventDisplay {
     display: none;
 }
 
-#currentCity{
+#currentCity {
     margin-bottom: 25px;
 }
 
-#eventDisplay img{
-    width:100%;
+#restaurantDetails {
+    height: 500px;
+    overflow: scroll;
+
+}
+
+.sideImages {
+    padding-top: 58px;
+    
 }
