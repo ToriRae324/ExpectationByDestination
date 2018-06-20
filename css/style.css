@@ -111,28 +111,36 @@ ul {
 }
 
 .defaultImages {
-    border: 2px solid #839496;
-    border-radius: 6px;
+    border: 2px solid black;
+    border-radius: 2px;
     margin-left: 30px;
 }
 
 .event-image,
 .event-name,
 .event-info,
-.venue-name {
+.venue-name,
+.eventLinks {
     text-align: center;
     margin-bottom: 0;
 }
 
 
 .event-image {
-    border: 2px solid #839496;
-    border-radius: 6px;
+    border: 2px solid black;
     margin-bottom: 5px;
 }
 
+#eventImg0,
+#eventImg1,
+#eventImg2 {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 40px;
+}
+
+
 .event-name {
-    font-family: 'Cinzel', serif;
     font-size: 22px;
     margin-top: 60px;
 
@@ -148,9 +156,17 @@ ul {
 }
 
 .venue-name,
-.event-info {
+.event-info,
+.eventLinks {
     font-family: 'Kalam', cursive;
 }
+
+.eventLinks {
+    margin-top: 15px;
+    
+}
+
+
 
 #eventCol {
     height: 650px;
@@ -161,6 +177,7 @@ ul {
 /* width */
 #eventCol::-webkit-scrollbar {
     width: 20px;
+    display: none;
 }
 
 /* Track */
@@ -254,18 +271,32 @@ ul {
     to { transform: rotate(360deg); }
   }
 
+  @media screen and (max-width: 1200px) {
+    #eventImg0,
+    #eventImg1,
+    #eventImg2 {
+        width: 160px;
+        height: 160px;
+        margin-bottom: 20px;
+    }
+}
 
-
-  @media screen and (max-width: 980px) {
+  @media screen and (max-width: 990px) {
     #concertFilter {
         margin-right: 13px;
         margin-left: 30px;
     }
-   
+    #eventImg0,
+    #eventImg1,
+    #eventImg2 {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 10px;
+    }
 
 }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     #concertFilter,
     #sportFilter,
     #artsTheaterFilter {

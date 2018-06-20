@@ -57,7 +57,7 @@ $(document).ready(function(){
             var ticketMasterSearch = "https://www.ticketmaster.com/search?tm_link=tm_header_search&q="+city+"+"+state+"+"+results[i].name;
 
             var playDates = $("<p class='event-info'>").text(localDate + "@" + localTime);
-            var eventInfo = $("<p class='event-info'>").html("<a target='_blank' class='eventLinks' href="+ticketMasterSearch+">Visit Ticket Master Here</a>");
+            var eventInfo = $("<p class='eventLinks'>").html("<a target='_blank' href="+ticketMasterSearch+">Visit Ticket Master Here</a>");
             
             // console.log(results[i].name);
             // console.log("------------------");
