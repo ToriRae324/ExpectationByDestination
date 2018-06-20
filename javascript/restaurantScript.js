@@ -7,7 +7,7 @@
 
 
 //global variables declared
-
+var success = false
 var city = "Charlotte" //default on page load city
 var state = "NC" //default on page load state
 var zomatoSearch = city + ", " + state
@@ -18,113 +18,61 @@ var establishment_type = ""
 var sort = ""
 var order = ""
 var cuisineType = ""
+var latitude;
+var longitude;
+var entityID
 
-
-//function run when page loads
 $(document).ready(function () {
-    displayCity();//displays the current city onto the page(in this case it is the default city)
-    //ajax command run using the url formed from the default city/state
+    getLocation()
+})
+//function run when page loads
+function search(x) {
+    //displays the current city onto the page(in this case it is the default city)
+    entityID = x
+    entityType = "city";
+    count = "10";
+    sort = "rating";
+    order = "desc";
+
+
+    //zomatoUrl is altered to perform a top rated search on the defualt city
+    zomatoUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=" + entityID + "&entity_type=" + entityType + "&count=" + count + "&sort=" + sort + "&order=" + order
+    //ajax function is performed\
     $.ajax({
-        url: zomatoUrl,//gotten from global variable above currently Charlotte, NC as it is the default
+
+        url: zomatoUrl,//updated zomatoUrl is used
         method: "GET",
         async: true,
-        //adds user key(API key) to the zomatoUrl to
         beforeSend: function (xhr) {
             xhr.setRequestHeader('user-key',
                 'b8fefdb1eb1eef0859aad5778cee33ad');
         },
     }).then(function (response) {
-        //pulls in entity_id from API will be used in next ajax function
-        entityID = response.location_suggestions[0].city_id;
-        //sets variables used in next ajax function
-        entityType = "city";
-        count = "10";
-        sort = "rating";
-        order = "desc";
-        //zomatoUrl is altered to perform a top rated search on the defualt city
-        zomatoUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=" + entityID + "&entity_type=" + entityType + "&count=" + count + "&sort=" + sort + "&order=" + order
-        //ajax function is performed
-        $.ajax({
-            url: zomatoUrl,//updated zomatoUrl is used
-            method: "GET",
-            async: true,
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('user-key',
-                    'b8fefdb1eb1eef0859aad5778cee33ad');
-            },
-        }).then(function (response) {
-            //console is cleared to keep it from filling up to much
-            //console.clear()
-            //populate function is called with response as argument
-            //this function fills in results found from API search into the html and console
-            populate(response)
-        })
-        //runs when user selects the submit button after filling in city and state form
-        $("#locSub").on("click", function (event) {
-            event.preventDefault()
+        //console is cleared to keep it from filling up to much
+        //console.clear()
+        //populate function is called with response as argument
+        //this function fills in results found from API search into the html and console
+        populate(response)
+    })
+    //runs when user selects the submit button after filling in city and state form
+    $("#locSub").on("click", function (event) {
+        event.preventDefault()
 
-            // if/else to validate user data
-            if ($("#inputCity").val() === "" || $("#inputState").val() === "Choose...") {
-                $("#modal").modal("toggle");
-            
-            } else {
+        // if/else to validate user data
+        if ($("#inputCity").val() === "" || $("#inputState").val() === "Choose...") {
+            $("#modal").modal("toggle");
 
-                $("#restaurantDetails").empty()//clears restaurantDetails div
-                city = $("#inputCity").val().trim()//changes prev city to submitted city 
-                state = $("#inputState").val().trim()//changes prev state to submitted city
-                displayCity()//displays new city info on page
-                zomatoSearch = city + ", " + state//changes zomatoSearch to new city/state
-                zomatoUrl = "https://developers.zomato.com/api/v2.1/locations?query=" + zomatoSearch + "&count=1$apikey=b8fefdb1eb1eef0859aad5778cee33ad"
-                //ajax function run
-                $.ajax({
-                    url: zomatoUrl,//pulls updated zomatoUrl
-                    method: "GET",
-                    async: true,
-                    beforeSend: function (xhr) {
-                        xhr.setRequestHeader('user-key',
-                            'b8fefdb1eb1eef0859aad5778cee33ad');
-                    },
-                }).then(function (response) {
+        } else {
 
-                    //updates entity id
-                    entityID = response.location_suggestions[0].city_id;
-                    entityType = "city";
-                    count = "10";
-                    sort = "rating";
-                    order = "desc";
-                    //searches top rated list from api using new entity_id so it will be of the new city
-                    zomatoUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=" + entityID + "&entity_type=" + entityType + "&count=" + count + "&sort=" + sort + "&order=" + order
-                    console.log("top rated list:")
-                    $.ajax({
-                        url: zomatoUrl,//searches with updated url
-                        method: "GET",
-                        async: true,
-                        beforeSend: function (xhr) {
-                            xhr.setRequestHeader('user-key',
-                                'b8fefdb1eb1eef0859aad5778cee33ad');
-                        },
-                    }).then(function (response) {
-                        console.clear()//clears console
-                        populate(response)//calls populate function with new information of new city
-                    })
-
-                })
-            }
-        })
-        //run when a cuisine option is clicked from the cuisine dropdown menu
-        $(".cuisineBtn").on("click", function (event) {
-            event.preventDefault()
-            //clears restaurant details div
-            $("#restaurantDetails").empty()
-            cuisineType = $(this).val()//gathers cuisine type from the value of the option clicked
-            entityType = "city"
-            count = "10"
-            sort = "rating"
-            order = "desc"
-            //updates url to do a cuisine search
-            zomatoUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=" + entityID + "&entity_type=" + entityType + "&count=" + count + "&cuisines=" + cuisineType + "&sort=" + sort + "&order=" + order
+            $("#restaurantDetails").empty()//clears restaurantDetails div
+            city = $("#inputCity").val().trim()//changes prev city to submitted city 
+            state = $("#inputState").val().trim()//changes prev state to submitted city
+            displayCity()//displays new city info on page
+            zomatoSearch = city + ", " + state//changes zomatoSearch to new city/state
+            zomatoUrl = "https://developers.zomato.com/api/v2.1/locations?query=" + zomatoSearch + "&count=1$apikey=b8fefdb1eb1eef0859aad5778cee33ad"
+            //ajax function run
             $.ajax({
-                url: zomatoUrl,
+                url: zomatoUrl,//pulls updated zomatoUrl
                 method: "GET",
                 async: true,
                 beforeSend: function (xhr) {
@@ -132,53 +80,18 @@ $(document).ready(function () {
                         'b8fefdb1eb1eef0859aad5778cee33ad');
                 },
             }).then(function (response) {
-                //console.clear()//clears console
-                populate(response)//fills console and html
 
-            })
-        })
-
-            $(".establishmentBtn").on("click", function (event) {
-                event.preventDefault()
-                
-                //clears restaurant details div
-                $("#restaurantDetails").empty()
-                establishment_type = $(this).val()//gathers establishment type from the value of the option clicked
-                entityType = "city"
-                count = "10"
-                sort = "rating"
-                order = "desc"
-                //updates url to do a establishment search
-                zomatoUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=" + entityID + "&entity_type=" + entityType + "&count=" + count + "&establishment_type=" + establishment_type + "&sort=" + sort + "&order=" + order
-                $.ajax({
-                    url: zomatoUrl,
-                    method: "GET",
-                    async: true,
-                    beforeSend: function (xhr) {
-                        xhr.setRequestHeader('user-key',
-                            'b8fefdb1eb1eef0859aad5778cee33ad');
-                    },
-                }).then(function (response) {
-                    //console.clear()//clears console
-                    populate(response)//fills console and html
-    
-                })
-            })
-
-            //when top rated button is clicked it will populate the html and console with the ten highest rated restaurants of that city
-            $("#topRated").on("click", function (event) {
-                event.preventDefault()
-                //clears restaurant details div
-                $("#restaurantDetails").empty()
-                
-                entityType = "city"
-                count = "10"
-                sort = "rating"
-                order = "desc"
-                //updates url to do a top rated search on the city you are currently in
+                //updates entity id
+                entityID = response.location_suggestions[0].city_id;
+                entityType = "city";
+                count = "10";
+                sort = "rating";
+                order = "desc";
+                //searches top rated list from api using new entity_id so it will be of the new city
                 zomatoUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=" + entityID + "&entity_type=" + entityType + "&count=" + count + "&sort=" + sort + "&order=" + order
+                console.log("top rated list:")
                 $.ajax({
-                    url: zomatoUrl,
+                    url: zomatoUrl,//searches with updated url
                     method: "GET",
                     async: true,
                     beforeSend: function (xhr) {
@@ -186,13 +99,95 @@ $(document).ready(function () {
                             'b8fefdb1eb1eef0859aad5778cee33ad');
                     },
                 }).then(function (response) {
-                    //console.clear()//clears console
-                    populate(response)//fills console and html
-    
+                    console.clear()//clears console
+                    populate(response)//calls populate function with new information of new city
                 })
-            
+
+            })
+        }
+    })
+    //run when a cuisine option is clicked from the cuisine dropdown menu
+    $(".cuisineBtn").on("click", function (event) {
+        event.preventDefault()
+        //clears restaurant details div
+        $("#restaurantDetails").empty()
+        cuisineType = $(this).val()//gathers cuisine type from the value of the option clicked
+        entityType = "city"
+        count = "10"
+        sort = "rating"
+        order = "desc"
+        //updates url to do a cuisine search
+        zomatoUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=" + entityID + "&entity_type=" + entityType + "&count=" + count + "&cuisines=" + cuisineType + "&sort=" + sort + "&order=" + order
+        $.ajax({
+            url: zomatoUrl,
+            method: "GET",
+            async: true,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('user-key',
+                    'b8fefdb1eb1eef0859aad5778cee33ad');
+            },
+        }).then(function (response) {
+            //console.clear()//clears console
+            populate(response)//fills console and html
+
         })
     })
+
+    $(".establishmentBtn").on("click", function (event) {
+        event.preventDefault()
+
+        //clears restaurant details div
+        $("#restaurantDetails").empty()
+        establishment_type = $(this).val()//gathers establishment type from the value of the option clicked
+        entityType = "city"
+        count = "10"
+        sort = "rating"
+        order = "desc"
+        //updates url to do a establishment search
+        zomatoUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=" + entityID + "&entity_type=" + entityType + "&count=" + count + "&establishment_type=" + establishment_type + "&sort=" + sort + "&order=" + order
+        $.ajax({
+            url: zomatoUrl,
+            method: "GET",
+            async: true,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('user-key',
+                    'b8fefdb1eb1eef0859aad5778cee33ad');
+            },
+        }).then(function (response) {
+            //console.clear()//clears console
+            populate(response)//fills console and html
+
+        })
+    })
+
+    //when top rated button is clicked it will populate the html and console with the ten highest rated restaurants of that city
+    $("#topRated").on("click", function (event) {
+        event.preventDefault()
+        //clears restaurant details div
+        $("#restaurantDetails").empty()
+
+        entityType = "city"
+        count = "10"
+        sort = "rating"
+        order = "desc"
+        //updates url to do a top rated search on the city you are currently in
+        zomatoUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=" + entityID + "&entity_type=" + entityType + "&count=" + count + "&sort=" + sort + "&order=" + order
+        $.ajax({
+            url: zomatoUrl,
+            method: "GET",
+            async: true,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('user-key',
+                    'b8fefdb1eb1eef0859aad5778cee33ad');
+            },
+        }).then(function (response) {
+            //console.clear()//clears console
+            populate(response)//fills console and html
+
+        })
+
+    })
+}
 
 
 // on click show/hide restaurants/events
@@ -212,14 +207,14 @@ function displayInfo(response, i) {
     var name = info.name;
     var rating = info.user_rating.aggregate_rating;
     var cuisines = info.cuisines;
-    
+
     var thumbnail = info.thumb;
-    
+
     var pairPrice = info.average_cost_for_two;
     var address = info.location.address;
     var url = info.url;
-    
-    
+
+
     //console.log(thumbnail)
     thumbnail = checkImages(thumbnail)
     // Parse info into Card HTML
@@ -251,23 +246,76 @@ function populate(response) {
     }
 }
 //function takes current city the user is on and displays it in the currentCity span
-function displayCity(){
-$("#currentCity").text(city +", " + state)//takes city and state global variables and displays them
+function displayCity() {
+    $("#currentCity").text(city + ", " + state)//takes city and state global variables and displays them
 }
 
 
-function checkImages(thumbnail){
+function checkImages(thumbnail) {
 
-        if (thumbnail === ""){
+    if (thumbnail === "") {
         thumbnail = "images/foodicon.png"
-        } 
-        else
-        {
-            //image src is there
-        }
-        return thumbnail
-    
+    }
+    else {
+        //image src is there
+    }
+    return thumbnail
+
 }
-});
+
+
+
+
+
+
+function getLocation() {
+
+        navigator.geolocation.watchPosition(function (position) {
+            console.log("approved")
+            navigator.geolocation.getCurrentPosition(showPosition)
+        },
+            function (error) {
+                if (error.code == error.PERMISSION_DENIED)
+                    entityID = 303
+                displayLocation("Charlotte, NC")
+                search(entityID)
+                eventSearch("Charlotte", "NC")
+            });
+
+    }
+
+
+function showPosition(position) {
+    latitude = position.coords.latitude
+    longitude = position.coords.longitude
+    console.log("working1")
+    zomatoUrl = "https://developers.zomato.com/api/v2.1/cities?lat=" + latitude + "&lon=" + longitude + "&count=1"
+    $.ajax({
+        
+        url: zomatoUrl,
+        method: "GET",
+        async: true,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader('user-key',
+                'b8fefdb1eb1eef0859aad5778cee33ad');
+        },
+    }).then(function (response) {
+        console.log("working2")
+        var currentEntityID = response.location_suggestions[0].id
+        var locName = response.location_suggestions[0].name
+        console.log(currentEntityID)
+        displayLocation(locName)
+        var cityNameArr = locName.split(", ")
+        console.log(cityNameArr[0])
+        console.log(cityNameArr[1])
+        search(currentEntityID)
+        eventSearch(cityNameArr[0], cityNameArr[1])
+    })
+
+}
+function displayLocation(name) {
+    $("#currentCity").text(name)
+}
+
 
 
