@@ -50,30 +50,26 @@ ul {
 
 #concertFilter {
     margin-left: 40px;
-    padding-top: 3px;
-    width: 12%;
-    font-size: 23px;
 }
 
+#concertFilter,
 #sportFilter,
-#artsTheaterFilter,
-#familyFilter,
-#vipFilter,
-#dealsFilter {
-    border-left: 1px solid #B58900;
-    width: 12%;
+#artsTheaterFilter {
+    width: 200px;
     height: 30px;
     text-align: center;
     padding-top: 3px;
-    font-size: 23px;
+    font-size: 26px;
+}
+
+#sportFilter,
+#artsTheaterFilter {
+    border-left: 1px solid #B58900;
 }
 
 #concertFilter:hover,
 #sportFilter:hover,
-#artsTheaterFilter:hover,
-#familyFilter:hover,
-#vipFilter:hover,
-#dealsFilter:hover {
+#artsTheaterFilter:hover {
     color: #B58900;
 
 }
@@ -157,7 +153,7 @@ ul {
 
 /* Handle */
 #eventCol::-webkit-scrollbar-thumb {
-    background: #B58900; 
+    background: #073642; 
     border-radius: 10px;
 }
 /*****************************/
@@ -239,3 +235,39 @@ ul {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
+
+
+
+  @media screen and (max-width: 980px) {
+    #concertFilter {
+        margin-right: 13px;
+        margin-left: 45px;
+    }
+
+    #artsTheaterFilter {
+        width: 20%;
+    }
+
+}
+
+  @media screen and (max-width: 768px) {
+    #concertFilter,
+    #sportFilter,
+    #artsTheaterFilter {
+        font-size: 16px;
+        width: 120px;
+    }
+
+    #concertFilter {
+        
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+    #concertFilter {
+        font-size: 16px;
+        margin-right: 20px;
+    }
+
+}
