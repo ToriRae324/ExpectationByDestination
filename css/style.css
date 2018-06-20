@@ -17,7 +17,7 @@ ul {
     margin-top: 25px;
     font-size: small;
     background-color: rgb(1, 21, 26);
-    line-height: .5;
+    line-height: 1;
     padding-top: 15px;
     font-family: 'Quicksand', sans-serif;
 }
@@ -68,18 +68,31 @@ ul {
 }
 
 #concertFilter {
-    margin-left: 30px;
-    width: 220px;
+    margin-left: 40px;
+    padding-top: 3px;
+    width: 12%;
+    font-size: 23px;
 }
 
 #sportFilter,
-#artsTheaterFilter {
+#artsTheaterFilter,
+#familyFilter,
+#vipFilter,
+#dealsFilter {
     border-left: 1px solid #B58900;
+    width: 12%;
+    height: 30px;
+    text-align: center;
+    padding-top: 3px;
+    font-size: 23px;
 }
 
 #concertFilter:hover,
 #sportFilter:hover,
-#artsTheaterFilter:hover {
+#artsTheaterFilter:hover,
+#familyFilter:hover,
+#vipFilter:hover,
+#dealsFilter:hover {
     color: #B58900;
 
 }
@@ -112,34 +125,17 @@ ul {
 }
 
 .defaultImages {
-    border: 2px solid black;
-    border-radius: 2px;
+    border: 2px solid #839496;
+    border-radius: 6px;
     margin-left: 30px;
 }
 
-.event-image,
-.event-name,
-.event-info,
-.venue-name,
-.eventLinks {
-    text-align: center;
-    margin-bottom: 0;
-}
 
 
 .event-image {
-    border: 2px solid black;
-    margin-bottom: 5px;
+    border: 2px solid #839496;
+    border-radius: 6px;
 }
-
-#eventImg0,
-#eventImg1,
-#eventImg2 {
-    width: 200px;
-    height: 200px;
-    margin-bottom: 40px;
-}
-
 
 .event-name {
     font-size: 22px;
@@ -148,13 +144,19 @@ ul {
 
 }
 
+.event-image,
+.event-name,
+.event-info,
+.venue-name {
+    text-align: center;
+}
 
 .eventSmImg{
     width: 160px;
     height: 160px;
 }
 .event-name {
-    margin-top: 40px
+    margin-top: 10px
 }
 
 
@@ -163,8 +165,6 @@ ul {
     margin-top: 15px;
     
 }
-
-
 
 #eventCol {
     height: 650px;
@@ -175,7 +175,6 @@ ul {
 /* width */
 #eventCol::-webkit-scrollbar {
     width: 20px;
-    display: none;
 }
 
 /* Track */
@@ -186,14 +185,10 @@ ul {
 
 /* Handle */
 #eventCol::-webkit-scrollbar-thumb {
-    background: #073642; 
+    background: #B58900; 
     border-radius: 10px;
 }
 /*****************************/
-.btn-light {
-    margin-bottom: 5px;
-}
-
 /* extra */
 .intersecting-circles-spinner, .intersecting-circles-spinner * {
     box-sizing: border-box;
