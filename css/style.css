@@ -12,6 +12,15 @@ ul {
     border-bottom: 1px black solid;
 }
 
+#footer {
+    margin-top: 25px;
+    font-size: small;
+    background-color: rgb(1, 21, 26);
+    line-height: .5;
+    padding-top: 15px;
+    font-family: 'Quicksand', sans-serif;
+}
+
 #headerBackground {
     text-align: center;
     width: 100%;
