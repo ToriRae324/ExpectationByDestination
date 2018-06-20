@@ -1,6 +1,6 @@
 //ticketMaster API key: cdS8dgGbDGzl3TTP71wEQpLkCA8G95Ig
 
-$(document).ready(function(){
+
     
     var city = "Charlotte";
     var state = "NC";
@@ -8,9 +8,38 @@ $(document).ready(function(){
     var family = 0;
       
     //Function runs the search on the TicketMaster API.
-    function eventSearch(x){
+    
+
+
+//Searches on page load, based on current location.
+//eventSearch();
+
+
+//function to be ran on submit click
+    $("#locSub").on("click", function(event){
+        event.preventDefault();
+        city = $("#inputCity").val();
+        state = $("#inputState").val();
+        eventType = "";
+        // eventType = $("#event-type-input").val();
+        $("#eventRow").html("");
+        eventSearch(city, state);
         
+    });
+
+//function to run when filtering on the event page
+    $(".eventFilters").on("click", function(){
+        
+        //filter
+        eventType = $(this).data("value");
+        $("#eventRow").empty();
+        eventSearch(city, state);
+    });
+
+    function eventSearch(x, y){
         city = x
+        state = y
+
         var ticketMasterUrl = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + city + "&classificationName=" + eventType + "&apikey=cdS8dgGbDGzl3TTP71wEQpLkCA8G95Ig"
         $.ajax({
             url: ticketMasterUrl,
@@ -92,35 +121,6 @@ $(document).ready(function(){
 
         };
     });
-
-};
-
-//Searches on page load, based on current location.
-eventSearch();
-
-
-//function to be ran on submit click
-    $("#locSub").on("click", function(event){
-        event.preventDefault();
-        city = $("#inputCity").val();
-        state = $("#inputState").val();
-        eventType = "";
-        // eventType = $("#event-type-input").val();
-        $("#eventRow").html("");
-        eventSearch();
-        
-    });
-
-//function to run when filtering on the event page
-    $(".eventFilters").on("click", function(){
-        
-        //filter
-        eventType = $(this).data("value");
-        $("#eventRow").empty();
-        eventSearch();
-    });
-
-});
-
+    }
 
 
