@@ -8,9 +8,10 @@ $(document).ready(function(){
     var family = 0;
       
     //Function runs the search on the TicketMaster API.
-    function eventSearch(){
+    function eventSearch(x){
         
-        var ticketMasterUrl = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + city + "&stateCode=" + state + "&classificationName=" + eventType + "&apikey=cdS8dgGbDGzl3TTP71wEQpLkCA8G95Ig"
+        city = x
+        var ticketMasterUrl = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + city + "&classificationName=" + eventType + "&apikey=cdS8dgGbDGzl3TTP71wEQpLkCA8G95Ig"
         $.ajax({
             url: ticketMasterUrl,
             method: "Get",

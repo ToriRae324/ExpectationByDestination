@@ -7,7 +7,7 @@
 
 
 //global variables declared
-
+var success = false
 var city = "Charlotte" //default on page load city
 var state = "NC" //default on page load state
 var zomatoSearch = city + ", " + state
@@ -18,33 +18,28 @@ var establishment_type = ""
 var sort = ""
 var order = ""
 var cuisineType = ""
+var latitude;
+var longitude;
+var entityID
 
-
+$(document).ready(function(){
+getLocation()
+})
 //function run when page loads
-$(document).ready(function () {
-    displayCity();//displays the current city onto the page(in this case it is the default city)
-    //ajax command run using the url formed from the default city/state
-    $.ajax({
-        url: zomatoUrl,//gotten from global variable above currently Charlotte, NC as it is the default
-        method: "GET",
-        async: true,
-        //adds user key(API key) to the zomatoUrl to
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader('user-key',
-                'b8fefdb1eb1eef0859aad5778cee33ad');
-        },
-    }).then(function (response) {
-        //pulls in entity_id from API will be used in next ajax function
-        entityID = response.location_suggestions[0].city_id;
-        //sets variables used in next ajax function
-        entityType = "city";
-        count = "10";
-        sort = "rating";
-        order = "desc";
+function search(x){
+    //displays the current city onto the page(in this case it is the default city)
+     entityID = x
+     entityType = "city";
+     count = "10";
+     sort = "rating";
+     order = "desc";
+    
+
         //zomatoUrl is altered to perform a top rated search on the defualt city
         zomatoUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=" + entityID + "&entity_type=" + entityType + "&count=" + count + "&sort=" + sort + "&order=" + order
-        //ajax function is performed
+        //ajax function is performed\
         $.ajax({
+            
             url: zomatoUrl,//updated zomatoUrl is used
             method: "GET",
             async: true,
@@ -182,7 +177,7 @@ $(document).ready(function () {
                 })
             
         })
-    })
+    }
 
 
 // on click show/hide restaurants/events
@@ -258,6 +253,49 @@ function checkImages(thumbnail){
         return thumbnail
     
 }
-});
+
+
+
+
+
+
+function getLocation() {
+    if (navigator.geolocation) 
+    {
+        entityID = navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        entityID = 303
+        search(entityID)
+    }
+    
+    }
+
+
+function showPosition(position) {
+    latitude = position.coords.latitude
+    longitude = position.coords.longitude
+
+    zomatoUrl = "https://developers.zomato.com/api/v2.1/cities?lat="+latitude+"&lon="+longitude+"&count=1"
+    $.ajax({
+        url: zomatoUrl,
+        method: "GET",
+        async: true,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader('user-key',
+                'b8fefdb1eb1eef0859aad5778cee33ad');
+        },
+    }).then(function (response) {
+        var currentEntityID = response.location_suggestions[0].id
+        var locName = response.location_suggestions[0].name
+        displayLocation(locName)
+        search(currentEntityID)
+        eventSearch(locName)
+    })
+
+}
+function displayLocation(name){
+    $("#currentCity").text(name)
+}
+    
 
 
