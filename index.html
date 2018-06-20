@@ -44,6 +44,27 @@
 
 <body>
 
+    <!-- Modal -->
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content text-white bg-secondary">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Something's Wrong</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    We need both City and State to provide the best results!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Main container -->
     <div class="container">
 
@@ -64,7 +85,7 @@
                         <span class="circle"></span>
                     </div>
                 </div>
-                
+
                 <h1>Expectations by Destination</h1>
 
                 <div class="row">
@@ -78,15 +99,15 @@
 
             <!-- Search Box -->
             <div class="col-md-5 text-right">
-                <form>
+                <form method="post">
                     <div class="form-row">
                         <div class="form-group col-md-7">
                             <label for="inputCity">City</label>
-                            <input type="text" class="form-control" id="inputCity">
+                            <input type="text" class="form-control" id="inputCity" required>
                         </div>
                         <div class="form-group col-md-5">
                             <label for="inputState">State</label>
-                            <select id="inputState" class="form-control">
+                            <select id="inputState" class="form-control" required>
                                 <option selected>Choose...</option>
                                 <option value="AL">Alabama</option>
                                 <option value="AK">Alaska</option>
@@ -158,7 +179,9 @@
 
             <!-- Resturants -->
             <div class="col-md-9">
-                <h3>Places to eat around <span id="currentCity"></span> </h3>
+                <h3>Places to eat around
+                    <span id="currentCity"></span>
+                </h3>
                 <div class="row">
                     <div class="col-md-2">
                         <div class="btn-group-vertical" role="group">
@@ -182,24 +205,24 @@
                                 </div>
                             </div>
                             <div class="btn-group-vertical" role="group">
-                                    <button id="btnGroupDrop2" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        Establishment
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
-                                        <button class="dropdown-item establishmentBtn" value="16">Casual Dining</button>
-                                        <button class="dropdown-item establishmentBtn" value="21">Quick Bites</button>
-                                        <button class="dropdown-item establishmentBtn" value="6">Pub</button>
-                                        <button class="dropdown-item establishmentBtn" value="101">Diner</button>
-                                        <button class="dropdown-item establishmentBtn" value="31">Bakery</button>
-                                        <button class="dropdown-item establishmentBtn" value="18">Fine Dining</button>
-                                        <button class="dropdown-item establishmentBtn" value="7">Bar</button>
-                                        <button class="dropdown-item establishmentBtn" value="283">Brewery</button>
-                                        <button class="dropdown-item establishmentBtn" value="81">Food Truck</button>
-                                        <button class="dropdown-item establishmentBtn" value="291">Sweet Shop</button>
-                                    </div>
+                                <button id="btnGroupDrop2" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    Scene
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+                                    <button class="dropdown-item establishmentBtn" value="16">Casual Dining</button>
+                                    <button class="dropdown-item establishmentBtn" value="21">Quick Bites</button>
+                                    <button class="dropdown-item establishmentBtn" value="6">Pub</button>
+                                    <button class="dropdown-item establishmentBtn" value="101">Diner</button>
+                                    <button class="dropdown-item establishmentBtn" value="31">Bakery</button>
+                                    <button class="dropdown-item establishmentBtn" value="18">Fine Dining</button>
+                                    <button class="dropdown-item establishmentBtn" value="7">Bar</button>
+                                    <button class="dropdown-item establishmentBtn" value="283">Brewery</button>
+                                    <button class="dropdown-item establishmentBtn" value="81">Food Truck</button>
+                                    <button class="dropdown-item establishmentBtn" value="291">Sweet Shop</button>
                                 </div>
-                            
+                            </div>
+
                         </div>
                     </div>
 
