@@ -278,8 +278,8 @@ function getLocation() {
         },
             function (error) {
                 if (error.code == error.PERMISSION_DENIED)
-                    entityID = 303
-                displayLocation("Charlotte, NC")
+                    entityID = 280
+                displayLocation("New York City, New York")
                 search(entityID)
                 eventSearch("Charlotte", "NC")
             });
