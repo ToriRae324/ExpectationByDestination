@@ -82,10 +82,6 @@ ul {
     width: 80%;
 }
 
-.eventSmImg{
-    width: 160px;
-    height: 160px;
-}
 #eventCol img {
     width: 100%;
 }
@@ -109,10 +105,68 @@ ul {
     
 }
 
-.btn-light {
-    margin-bottom: 5px;
+.defaultImages {
+    border: 2px solid #839496;
+    border-radius: 6px;
+    margin-left: 30px;
 }
 
+
+
+.event-image {
+    border: 2px solid #839496;
+    border-radius: 6px;
+}
+
+.event-name {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+
+}
+
+.event-image,
+.event-name,
+.event-info,
+.venue-name {
+    text-align: center;
+}
+
+.eventSmImg{
+    width: 160px;
+    height: 160px;
+}
+.event-name {
+    margin-top: 10px
+}
+
+.venue-name,
+.event-info {
+    font-family: 'Kalam', cursive;
+}
+
+#eventCol {
+    height: 650px;
+    overflow: scroll;
+}
+
+/******** scroll bar ********/
+/* width */
+#eventCol::-webkit-scrollbar {
+    width: 20px;
+}
+
+/* Track */
+#eventCol::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+
+/* Handle */
+#eventCol::-webkit-scrollbar-thumb {
+    background: #B58900; 
+    border-radius: 10px;
+}
+/*****************************/
 /* extra */
 .intersecting-circles-spinner, .intersecting-circles-spinner * {
     box-sizing: border-box;
