@@ -105,12 +105,13 @@ ul {
     
 }
 
-<<<<<<< HEAD
 .defaultImages {
     border: 2px solid #839496;
     border-radius: 6px;
     margin-left: 30px;
 }
+
+
 
 .event-image {
     border: 2px solid #839496;
@@ -130,6 +131,10 @@ ul {
     text-align: center;
 }
 
+.eventSmImg{
+    width: 160px;
+    height: 160px;
+}
 .event-name {
     margin-top: 10px
 }
@@ -162,12 +167,6 @@ ul {
     border-radius: 10px;
 }
 /*****************************/
-=======
-.btn-light {
-    margin-bottom: 5px;
-}
-
->>>>>>> e90440ef35f866612dbc0c12a2e4074711eef012
 /* extra */
 .intersecting-circles-spinner, .intersecting-circles-spinner * {
     box-sizing: border-box;
