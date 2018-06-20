@@ -47,11 +47,6 @@ ul {
 }
 
 
-
-#concertFilter {
-    margin-left: 40px;
-}
-
 #concertFilter,
 #sportFilter,
 #artsTheaterFilter {
@@ -60,6 +55,11 @@ ul {
     text-align: center;
     padding-top: 3px;
     font-size: 26px;
+}
+
+#concertFilter {
+    margin-left: 30px;
+    width: 220px;
 }
 
 #sportFilter,
@@ -107,25 +107,28 @@ ul {
     margin-left: 30px;
 }
 
-
-
-.event-image {
-    border: 2px solid #839496;
-    border-radius: 6px;
-}
-
-.event-name {
-    font-family: 'Cinzel', serif;
-    font-size: 20px;
-
-}
-
 .event-image,
 .event-name,
 .event-info,
 .venue-name {
     text-align: center;
+    margin-bottom: 0;
 }
+
+
+.event-image {
+    border: 2px solid #839496;
+    border-radius: 6px;
+    margin-bottom: 5px;
+}
+
+.event-name {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    margin-top: 60px;
+
+}
+
 
 .eventSmImg{
     width: 160px;
@@ -163,13 +166,10 @@ ul {
     border-radius: 10px;
 }
 /*****************************/
-<<<<<<< HEAD
 .btn-light {
     margin-bottom: 5px;
 }
 
-=======
->>>>>>> daf8ac2a6cb5ab307f1c5cf1604dccb5d277ef70
 /* extra */
 .intersecting-circles-spinner, .intersecting-circles-spinner * {
     box-sizing: border-box;
@@ -243,7 +243,6 @@ ul {
   @keyframes intersecting-circles-spinners-animation {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
-<<<<<<< HEAD
   }
 
 
@@ -251,12 +250,9 @@ ul {
   @media screen and (max-width: 980px) {
     #concertFilter {
         margin-right: 13px;
-        margin-left: 45px;
+        margin-left: 30px;
     }
-
-    #artsTheaterFilter {
-        width: 20%;
-    }
+   
 
 }
 
@@ -264,23 +260,29 @@ ul {
     #concertFilter,
     #sportFilter,
     #artsTheaterFilter {
-        font-size: 16px;
-        width: 120px;
+        font-size: 26px;
+        width: 160px;
     }
 
     #concertFilter {
-        
+        margin-left: 15px;
     }
 
+    #row-image1,
+    #row-image2,
+    #row-image3 {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 640px) {
     #concertFilter {
-        font-size: 16px;
         margin-right: 20px;
+        margin-left: 12px;
+    }
+    .event-image {
+        height: 280px;
+        width: 400px;
     }
 
 }
-=======
-  }
->>>>>>> daf8ac2a6cb5ab307f1c5cf1604dccb5d277ef70
