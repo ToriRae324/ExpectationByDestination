@@ -57,33 +57,22 @@ function search(x){
         //runs when user selects the submit button after filling in city and state form
         $("#locSub").on("click", function (event) {
             event.preventDefault()
-            $("#restaurantDetails").empty()//clears restaurantDetails div
-            city = $("#inputCity").val().trim()//changes prev city to submitted city 
-            state = $("#inputState").val().trim()//changes prev state to submitted city
-            displayCity()//displays new city info on page
-            zomatoSearch = city + ", " + state//changes zomatoSearch to new city/state
-            zomatoUrl = "https://developers.zomato.com/api/v2.1/locations?query=" + zomatoSearch + "&count=1$apikey=b8fefdb1eb1eef0859aad5778cee33ad"
-            //ajax function run
-            $.ajax({
-                url: zomatoUrl,//pulls updated zomatoUrl
-                method: "GET",
-                async: true,
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('user-key',
-                        'b8fefdb1eb1eef0859aad5778cee33ad');
-                },
-            }).then(function (response) {
-                //updates entity id
-                entityID = response.location_suggestions[0].city_id;
-                entityType = "city";
-                count = "10";
-                sort = "rating";
-                order = "desc";
-                //searches top rated list from api using new entity_id so it will be of the new city
-                zomatoUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=" + entityID + "&entity_type=" + entityType + "&count=" + count + "&sort=" + sort + "&order=" + order
-                console.log("top rated list:")
+
+            // if/else to validate user data
+            if ($("#inputCity").val() === "" || $("#inputState").val() === "Choose...") {
+                $("#modal").modal("toggle");
+            
+            } else {
+
+                $("#restaurantDetails").empty()//clears restaurantDetails div
+                city = $("#inputCity").val().trim()//changes prev city to submitted city 
+                state = $("#inputState").val().trim()//changes prev state to submitted city
+                displayCity()//displays new city info on page
+                zomatoSearch = city + ", " + state//changes zomatoSearch to new city/state
+                zomatoUrl = "https://developers.zomato.com/api/v2.1/locations?query=" + zomatoSearch + "&count=1$apikey=b8fefdb1eb1eef0859aad5778cee33ad"
+                //ajax function run
                 $.ajax({
-                    url: zomatoUrl,//searches with updated url
+                    url: zomatoUrl,//pulls updated zomatoUrl
                     method: "GET",
                     async: true,
                     beforeSend: function (xhr) {
@@ -91,10 +80,31 @@ function search(x){
                             'b8fefdb1eb1eef0859aad5778cee33ad');
                     },
                 }).then(function (response) {
-                    //console.clear()//clears console
-                    populate(response)//calls populate function with new information of new city
+
+                    //updates entity id
+                    entityID = response.location_suggestions[0].city_id;
+                    entityType = "city";
+                    count = "10";
+                    sort = "rating";
+                    order = "desc";
+                    //searches top rated list from api using new entity_id so it will be of the new city
+                    zomatoUrl = "https://developers.zomato.com/api/v2.1/search?entity_id=" + entityID + "&entity_type=" + entityType + "&count=" + count + "&sort=" + sort + "&order=" + order
+                    console.log("top rated list:")
+                    $.ajax({
+                        url: zomatoUrl,//searches with updated url
+                        method: "GET",
+                        async: true,
+                        beforeSend: function (xhr) {
+                            xhr.setRequestHeader('user-key',
+                                'b8fefdb1eb1eef0859aad5778cee33ad');
+                        },
+                    }).then(function (response) {
+                        console.clear()//clears console
+                        populate(response)//calls populate function with new information of new city
+                    })
+
                 })
-            })
+            }
         })
         //run when a cuisine option is clicked from the cuisine dropdown menu
         $(".cuisineBtn").on("click", function (event) {
