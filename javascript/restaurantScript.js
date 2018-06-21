@@ -279,12 +279,14 @@ function getLocation() {
 
         navigator.geolocation.watchPosition(function (position) {
             console.log("approved")
+            $("#restaurantDetails").empty()
             navigator.geolocation.getCurrentPosition(showPosition)
         },
             function (error) {
                 if (error.code == error.PERMISSION_DENIED)
                     entityID = 288
                 displayLocation("Atlanta, Ga")
+                $("#restaurantDetails").empty()
                 search(entityID)
                 eventSearch("Atlanta", "Ga")
             });
