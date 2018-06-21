@@ -62,7 +62,9 @@ ul {
 #artsTheaterFilter {
     text-align: center;
     padding-top: 3px;
-    font-size: 26px;
+    font-size: 28px;
+    font-family: 'Kalam', cursive;
+
 }
 
 #concertFilter {
@@ -113,22 +115,23 @@ ul {
 }
 
 .defaultImages {
-    border: 2px solid #839496;
-    border-radius: 6px;
+    border: 2px solid black;
+    border-radius: 2px;
     margin-left: 30px;
 }
 
-
+.col-md-5 {
+    border: 1px solid black;
+}
 
 .event-image {
-    border: 2px solid #839496;
-    border-radius: 6px;
+    border: 2px solid black;
+    border-radius: 2px;
 }
 
 .event-name {
     font-size: 22px;
     margin-top: 60px;
-    font-family: 'Kalam', cursive;
 
 }
 
@@ -147,11 +150,15 @@ ul {
     margin-top: 10px
 }
 
+.venue-name,
+.event-info {
+    margin-bottom: 0;
+}
 
 
 .eventLinks {
     margin-top: 15px;
-    
+    text-align: center;
 }
 
 #eventCol {
