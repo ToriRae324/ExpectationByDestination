@@ -83,7 +83,7 @@
 
             var localDate = dateTimeMoment.format("MM/DD/YYYY");
             var localTime = dateTimeMoment.format("hh:mm a");
-            console.log(results[i].name);
+            // console.log(results[i].name);
             var ticketMasterSearch = "https://www.ticketmaster.com/search?tm_link=tm_header_search&q="+city+"+"+state+"+"+ results[i].name;
 
             var playDates = $("<p class='event-info'>").text(localDate + "@" + localTime);
