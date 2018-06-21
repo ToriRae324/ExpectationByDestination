@@ -102,7 +102,7 @@ function search(x) {
                             'b8fefdb1eb1eef0859aad5778cee33ad');
                     },
                 }).then(function (response) {
-                    console.clear()//clears console
+                    //console.clear()//clears console
                     $("#restaurantDetails").empty()
                     populate(response)//calls populate function with new information of new city
                 })
