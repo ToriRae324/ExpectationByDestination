@@ -54,12 +54,13 @@ function search(x) {
         //console.clear()
         //populate function is called with response as argument
         //this function fills in results found from API search into the html and console
+        $("#restaurantDetails").empty()
         populate(response)
     })
     //runs when user selects the submit button after filling in city and state form
     $("#locSub").on("click", function (event) {
         event.preventDefault()
-
+        
         // if/else to validate user data
         if ($("#inputCity").val() === "" || $("#inputState").val() === "Choose...") {
             $("#modal").modal("toggle");
@@ -102,6 +103,7 @@ function search(x) {
                     },
                 }).then(function (response) {
                     console.clear()//clears console
+                    $("#restaurantDetails").empty()
                     populate(response)//calls populate function with new information of new city
                 })
 
@@ -112,7 +114,7 @@ function search(x) {
     $(".cuisineBtn").on("click", function (event) {
         event.preventDefault()
         //clears restaurant details div
-        $("#restaurantDetails").empty()
+        
         cuisineType = $(this).val()//gathers cuisine type from the value of the option clicked
         entityType = "city"
         count = "10"
@@ -130,6 +132,7 @@ function search(x) {
             },
         }).then(function (response) {
             //console.clear()//clears console
+            $("#restaurantDetails").empty()
             populate(response)//fills console and html
 
         })
@@ -139,7 +142,7 @@ function search(x) {
         event.preventDefault()
 
         //clears restaurant details div
-        $("#restaurantDetails").empty()
+        
         establishment_type = $(this).val()//gathers establishment type from the value of the option clicked
         entityType = "city"
         count = "10"
@@ -157,6 +160,7 @@ function search(x) {
             },
         }).then(function (response) {
             //console.clear()//clears console
+            $("#restaurantDetails").empty()
             populate(response)//fills console and html
 
         })
@@ -166,7 +170,7 @@ function search(x) {
     $("#topRated").on("click", function (event) {
         event.preventDefault()
         //clears restaurant details div
-        $("#restaurantDetails").empty()
+        
 
         entityType = "city"
         count = "10"
@@ -184,6 +188,7 @@ function search(x) {
             },
         }).then(function (response) {
             //console.clear()//clears console
+            $("#restaurantDetails").empty()
             populate(response)//fills console and html
 
         })
@@ -274,12 +279,14 @@ function getLocation() {
 
         navigator.geolocation.watchPosition(function (position) {
             console.log("approved")
+            $("#restaurantDetails").empty()
             navigator.geolocation.getCurrentPosition(showPosition)
         },
             function (error) {
                 if (error.code == error.PERMISSION_DENIED)
                     entityID = 288
                 displayLocation("Atlanta, Ga")
+                $("#restaurantDetails").empty()
                 search(entityID)
                 eventSearch("Atlanta", "Ga")
             });
