@@ -2,14 +2,17 @@
 //this will help us determine what we need in our forms
 
 //Zomato API key: 8e3c68c31ec53ec6cbd05ad1cd8d8174
+
 //Zomato API key2: b-8fefdb1eb1eef0859aad5778cee33ad
 //Zomato API key3: 6e7f5aabe105c88f6c6dc171e83fcfc3
 //Zomato API key4: 165daac62323d05aa971457f752d4272
 
 
 
+
 //ticketMaster API key: cdS8dgGbDGzl3TTP71wEQpLkCA8G95Ig
 //pulled origin master
+
 
 
 //global variables declared
@@ -27,10 +30,13 @@ var cuisineType = ""
 var latitude;
 var longitude;
 var entityID
+var session
 
 $(document).ready(function () {
+    
     getLocation()
-})
+
+});
 //function run when page loads
 function search(x) {
     //displays the current city onto the page(in this case it is the default city)
@@ -68,8 +74,9 @@ function search(x) {
         // if/else to validate user data
         if ($("#inputCity").val() === "" || $("#inputState").val() === "Choose...") {
             $("#modal").modal("toggle");
-
-        } else {
+        
+        }
+         else {
 
             $("#restaurantDetails").empty()//clears restaurantDetails div
             city = $("#inputCity").val().trim()//changes prev city to submitted city 
@@ -113,7 +120,7 @@ function search(x) {
 
             })
         }
-    })
+       })
     //run when a cuisine option is clicked from the cuisine dropdown menu
     $(".cuisineBtn").on("click", function (event) {
         event.preventDefault()
@@ -281,7 +288,8 @@ function checkImages(thumbnail) {
 
 function getLocation() {
 
-        navigator.geolocation.watchPosition(function (position) {
+    
+        navigator.geolocation.getCurrentPosition(function (position) {
             console.log("approved")
             $("#restaurantDetails").empty()
             navigator.geolocation.getCurrentPosition(showPosition)
