@@ -8,6 +8,7 @@
 //pulled origin master
 
 
+
 //global variables declared
 var success = false
 var city = "Charlotte" //default on page load city
@@ -64,8 +65,9 @@ function search(x) {
         // if/else to validate user data
         if ($("#inputCity").val() === "" || $("#inputState").val() === "Choose...") {
             $("#modal").modal("toggle");
-
-        } else {
+        
+        }
+         else {
 
             $("#restaurantDetails").empty()//clears restaurantDetails div
             city = $("#inputCity").val().trim()//changes prev city to submitted city 
@@ -109,7 +111,7 @@ function search(x) {
 
             })
         }
-    })
+       })
     //run when a cuisine option is clicked from the cuisine dropdown menu
     $(".cuisineBtn").on("click", function (event) {
         event.preventDefault()
