@@ -63,7 +63,7 @@
             
             
             //creating a div with all its components
-            var eventDiv = $("<div class='col-md-6'>");
+            var eventDiv = $("<div class='col-md-6 eventBorder'>");
             // var eventDivOffset = $("<div class='col-md-1>");
             
             //Storing data we want to utilize
@@ -83,11 +83,11 @@
 
             var localDate = dateTimeMoment.format("MM/DD/YYYY");
             var localTime = dateTimeMoment.format("hh:mm a");
-
-            var ticketMasterSearch = "https://www.ticketmaster.com/search?tm_link=tm_header_search&q="+city+"+"+state+"+"+results[i].name;
+            console.log(results[i].name);
+            var ticketMasterSearch = "https://www.ticketmaster.com/search?tm_link=tm_header_search&q="+city+"+"+state+"+"+ results[i].name;
 
             var playDates = $("<p class='event-info'>").text(localDate + "@" + localTime);
-            var eventInfo = $("<p class='eventLinks'>").html("<a target='_blank' href="+ticketMasterSearch+">Visit Ticket Master Here</a>");
+            var eventInfo = $("<p class='eventLinks'>").html("<a target='_blank' href='"+ticketMasterSearch+"'>Visit Ticket Master Here</a>");
             
             // console.log(results[i].name);
             // console.log("------------------");
