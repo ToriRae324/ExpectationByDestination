@@ -401,3 +401,15 @@ ul,
     }
 
 }
+
+/* restaurant mq */
+@media screen and (max-width: 640px) {
+    .sideImages {
+        display: none; 
+    }
+    
+    #restaurantDetails {
+        height: auto;
+        overflow: visible;
+    }
+}
