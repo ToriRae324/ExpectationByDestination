@@ -2,7 +2,11 @@
 //this will help us determine what we need in our forms
 
 //Zomato API key: 8e3c68c31ec53ec6cbd05ad1cd8d8174
-//zomato api key2: b8fefdb1eb1eef0859aad5778cee33ad
+//Zomato API key2: b-8fefdb1eb1eef0859aad5778cee33ad
+//Zomato API key3: 6e7f5aabe105c88f6c6dc171e83fcfc3
+//Zomato API key4: 165daac62323d05aa971457f752d4272
+
+
 
 //ticketMaster API key: cdS8dgGbDGzl3TTP71wEQpLkCA8G95Ig
 //pulled origin master
@@ -13,7 +17,7 @@ var success = false
 var city = "Charlotte" //default on page load city
 var state = "NC" //default on page load state
 var zomatoSearch = city + ", " + state
-var zomatoUrl = "https://developers.zomato.com/api/v2.1/locations?query=" + zomatoSearch + "&count=1$apikey=b8fefdb1eb1eef0859aad5778cee33ad"
+var zomatoUrl = "https://developers.zomato.com/api/v2.1/locations?query=" + zomatoSearch + "&count=1$apikey=6e7f5aabe105c88f6c6dc171e83fcfc3"
 var cityID = ""
 var count = ""
 var establishment_type = ""
@@ -47,7 +51,7 @@ function search(x) {
         async: true,
         beforeSend: function (xhr) {
             xhr.setRequestHeader('user-key',
-                'b8fefdb1eb1eef0859aad5778cee33ad');
+                '6e7f5aabe105c88f6c6dc171e83fcfc3');
         },
     }).then(function (response) {
         //console is cleared to keep it from filling up to much
@@ -72,7 +76,7 @@ function search(x) {
             state = $("#inputState").val().trim()//changes prev state to submitted city
             displayCity()//displays new city info on page
             zomatoSearch = city + ", " + state//changes zomatoSearch to new city/state
-            zomatoUrl = "https://developers.zomato.com/api/v2.1/locations?query=" + zomatoSearch + "&count=1$apikey=b8fefdb1eb1eef0859aad5778cee33ad"
+            zomatoUrl = "https://developers.zomato.com/api/v2.1/locations?query=" + zomatoSearch + "&count=1$apikey=6e7f5aabe105c88f6c6dc171e83fcfc3"
             //ajax function run
             $.ajax({
                 url: zomatoUrl,//pulls updated zomatoUrl
@@ -80,7 +84,7 @@ function search(x) {
                 async: true,
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('user-key',
-                        'b8fefdb1eb1eef0859aad5778cee33ad');
+                        '6e7f5aabe105c88f6c6dc171e83fcfc3');
                 },
             }).then(function (response) {
 
@@ -99,7 +103,7 @@ function search(x) {
                     async: true,
                     beforeSend: function (xhr) {
                         xhr.setRequestHeader('user-key',
-                            'b8fefdb1eb1eef0859aad5778cee33ad');
+                            '6e7f5aabe105c88f6c6dc171e83fcfc3');
                     },
                 }).then(function (response) {
                     //console.clear()//clears console
@@ -128,7 +132,7 @@ function search(x) {
             async: true,
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('user-key',
-                    'b8fefdb1eb1eef0859aad5778cee33ad');
+                    '6e7f5aabe105c88f6c6dc171e83fcfc3');
             },
         }).then(function (response) {
             //console.clear()//clears console
@@ -156,7 +160,7 @@ function search(x) {
             async: true,
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('user-key',
-                    'b8fefdb1eb1eef0859aad5778cee33ad');
+                    '6e7f5aabe105c88f6c6dc171e83fcfc3');
             },
         }).then(function (response) {
             //console.clear()//clears console
@@ -184,7 +188,7 @@ function search(x) {
             async: true,
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('user-key',
-                    'b8fefdb1eb1eef0859aad5778cee33ad');
+                    '6e7f5aabe105c88f6c6dc171e83fcfc3');
             },
         }).then(function (response) {
             //console.clear()//clears console
@@ -306,7 +310,7 @@ function showPosition(position) {
         async: true,
         beforeSend: function (xhr) {
             xhr.setRequestHeader('user-key',
-                'b8fefdb1eb1eef0859aad5778cee33ad');
+                '6e7f5aabe105c88f6c6dc171e83fcfc3');
         },
     }).then(function (response) {
         console.log("working2")
