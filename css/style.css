@@ -63,7 +63,7 @@ ul,
 #artsTheaterFilter {
     text-align: center;
     padding-top: 3px;
-    font-size: 28px;
+    font-size: 32px;
     font-family: 'Kalam', cursive;
 
 }
@@ -86,6 +86,10 @@ ul,
 #artsTheaterFilter:hover {
     color: #B58900;
 
+}
+
+#filtersRow {
+    margin-bottom: 11px;
 }
 
 #eventCard {
@@ -121,7 +125,7 @@ ul,
     margin-left: 30px;
 }
 
-.col-md-5 {
+.eventBorder {
     border: 1px solid black;
 }
 
@@ -154,12 +158,16 @@ ul,
 .venue-name,
 .event-info {
     margin-bottom: 0;
+    font-family: 'Quicksand', sans-serif;
 }
 
 
 .eventLinks {
     margin-top: 15px;
     text-align: center;
+    font-family: 'Quicksand', sans-serif;
+
+
 }
 
 #eventCol {
@@ -336,7 +344,13 @@ ul,
     }
 
     #eventCol {
-        overflow: scroll;
+        overflow: inherit;
+    }
+
+    #footer {
+        position: fixed;
+        bottom: 0;
+
     }
 }
 
