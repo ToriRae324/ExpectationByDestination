@@ -63,8 +63,8 @@
             
             
             //creating a div with all its components
-            var eventDiv = $("<div class='col-md-5'>");
-            var eventDivOffset = $("<div class='col-md-1>");
+            var eventDiv = $("<div class='col-md-6'>");
+            // var eventDivOffset = $("<div class='col-md-1>");
             
             //Storing data we want to utilize
             var newP = $("<p class='event-name'>").text(results[i].name);
@@ -105,18 +105,18 @@
 
 
             //creating off-set columns to be appended on the left and right.
-            var divOffSetStatus = 0;
-            if (divOffSetStatus === 0){
-                $("#eventRow").append(eventDivOffset);
-                $("#eventRow").append(eventDiv);
-                divOffSetStatus = 1;
-            }
+            // var divOffSetStatus = 0;
+            // if (divOffSetStatus === 0){
+            //     $("#eventRow").append(eventDivOffset);
+            //     $("#eventRow").append(eventDiv);
+            //     divOffSetStatus = 1;
+            // }
 
-            else if (divOffSetStatus === 1){
-                $("#eventRow").append(eventDiv);
-                $("#eventRow").append(eventDivOffset);
-                divOffSetStatus = 0;
-            }
+            // else if (divOffSetStatus === 1){
+            //     $("#eventRow").append(eventDiv);
+            //     $("#eventRow").append(eventDivOffset);
+            //     divOffSetStatus = 0;
+            // }
 
 
         };
