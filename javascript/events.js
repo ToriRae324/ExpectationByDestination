@@ -103,6 +103,8 @@
             eventDiv.append(playDates);
             eventDiv.append(eventInfo);
 
+            $("#eventRow").append(eventDiv);
+
 
             //creating off-set columns to be appended on the left and right.
             // var divOffSetStatus = 0;
