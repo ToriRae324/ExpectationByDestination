@@ -39,6 +39,8 @@ ul,
 .imageItem {
     height: 160px;
     width: 160px;
+    border-radius: 25px;
+    border: 2px solid #FDF6E3;
 }
 
 .restaurantImage {
