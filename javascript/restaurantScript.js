@@ -20,7 +20,7 @@ var success = false
 var city = "Charlotte" //default on page load city
 var state = "NC" //default on page load state
 var zomatoSearch = city + ", " + state
-var zomatoUrl = "https://developers.zomato.com/api/v2.1/locations?query=" + zomatoSearch + "&count=1$apikey=6e7f5aabe105c88f6c6dc171e83fcfc3"
+var zomatoUrl = "https://developers.zomato.com/api/v2.1/locations?query=" + zomatoSearch + "&count=1$apikey=165daac62323d05aa971457f752d4272"
 var cityID = ""
 var count = ""
 var establishment_type = ""
@@ -57,7 +57,7 @@ function search(x) {
         async: true,
         beforeSend: function (xhr) {
             xhr.setRequestHeader('user-key',
-                '6e7f5aabe105c88f6c6dc171e83fcfc3');
+                '165daac62323d05aa971457f752d4272');
         },
     }).then(function (response) {
         //console is cleared to keep it from filling up to much
@@ -83,7 +83,7 @@ function search(x) {
             state = $("#inputState").val().trim()//changes prev state to submitted city
             displayCity()//displays new city info on page
             zomatoSearch = city + ", " + state//changes zomatoSearch to new city/state
-            zomatoUrl = "https://developers.zomato.com/api/v2.1/locations?query=" + zomatoSearch + "&count=1$apikey=6e7f5aabe105c88f6c6dc171e83fcfc3"
+            zomatoUrl = "https://developers.zomato.com/api/v2.1/locations?query=" + zomatoSearch + "&count=1$apikey=165daac62323d05aa971457f752d4272"
             //ajax function run
             $.ajax({
                 url: zomatoUrl,//pulls updated zomatoUrl
@@ -91,7 +91,7 @@ function search(x) {
                 async: true,
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('user-key',
-                        '6e7f5aabe105c88f6c6dc171e83fcfc3');
+                        '165daac62323d05aa971457f752d4272');
                 },
             }).then(function (response) {
 
@@ -110,7 +110,7 @@ function search(x) {
                     async: true,
                     beforeSend: function (xhr) {
                         xhr.setRequestHeader('user-key',
-                            '6e7f5aabe105c88f6c6dc171e83fcfc3');
+                            '165daac62323d05aa971457f752d4272');
                     },
                 }).then(function (response) {
                     //console.clear()//clears console
@@ -139,7 +139,7 @@ function search(x) {
             async: true,
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('user-key',
-                    '6e7f5aabe105c88f6c6dc171e83fcfc3');
+                    '165daac62323d05aa971457f752d4272');
             },
         }).then(function (response) {
             //console.clear()//clears console
@@ -167,7 +167,7 @@ function search(x) {
             async: true,
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('user-key',
-                    '6e7f5aabe105c88f6c6dc171e83fcfc3');
+                    '165daac62323d05aa971457f752d4272');
             },
         }).then(function (response) {
             //console.clear()//clears console
@@ -195,7 +195,7 @@ function search(x) {
             async: true,
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('user-key',
-                    '6e7f5aabe105c88f6c6dc171e83fcfc3');
+                    '165daac62323d05aa971457f752d4272');
             },
         }).then(function (response) {
             //console.clear()//clears console
@@ -206,8 +206,6 @@ function search(x) {
 
     })
 }
-
-
 // on click show/hide restaurants/events
 $("#restaurantsBtn").on("click", function () {
     $("#restaurantDisplay").css("display", "flex");
@@ -267,8 +265,6 @@ function populate(response) {
 function displayCity() {
     $("#currentCity").text(city + ", " + state)//takes city and state global variables and displays them
 }
-
-
 function checkImages(thumbnail) {
 
     if (thumbnail === "") {
@@ -280,12 +276,6 @@ function checkImages(thumbnail) {
     return thumbnail
 
 }
-
-
-
-
-
-
 function getLocation() {
 
     
@@ -318,7 +308,7 @@ function showPosition(position) {
         async: true,
         beforeSend: function (xhr) {
             xhr.setRequestHeader('user-key',
-                '6e7f5aabe105c88f6c6dc171e83fcfc3');
+                '165daac62323d05aa971457f752d4272');
         },
     }).then(function (response) {
         console.log("working2")
